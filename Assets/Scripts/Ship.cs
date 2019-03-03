@@ -4,17 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Ship : ScriptGlobal
+public class Ship : LifeBase
 {
     // Start is called before the first frame update
     //private BulletManagement bulletManagement;
-    private LifePlayer characterLife;
+    //private LifePlayer characterLife;
     [SerializeField]private AudioClip playerShotSound;
     [SerializeField] private AudioClip explosionSound;
     [SerializeField] private string tagobj;
     [SerializeField] private GameObject projetile;
     [SerializeField] private Transform SpawnProjetile;
     [SerializeField] private float Rateprojetile;
+    private LifeBase enemyHealth, playerHealth;
+    private ShipEnemy enemy;
     private float nextProjetile;
 
     // hit
@@ -27,11 +29,13 @@ public class Ship : ScriptGlobal
 
     private void FindObj()
     {
-        characterLife = FindObjectOfType(typeof(LifePlayer)) as LifePlayer;
+        
                 
     }
     protected override void Start()
     {
+        
+        
         FindObj();
         base.Start();
     }
@@ -49,8 +53,8 @@ public class Ship : ScriptGlobal
     }
     public void HUDSTxt()
     {
-        hp.text = hptxt + characterLife.Hp;
-        kill.text = killTxt + killEnemy;
+        hp.text = hptxt + Hp;
+        //kill.text = killTxt + killEnemy;
     }
     public  void AddNumKillEnemy()
     {
@@ -73,35 +77,36 @@ public class Ship : ScriptGlobal
 
     public override void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (collision.gameObject.tag == tagobj)
         {
             var damagePlayer = false;
 
-            ShipEnemy enemy = collision.gameObject.GetComponent<ShipEnemy>();
+             enemy = collision.gameObject.GetComponent<ShipEnemy>();
 
-            //if (enemy != null)
-            //{
-            //    //CharacterLife enemyHealth = enemy.GetComponent<CharacterLife>();
+            if (enemy != null)
+            {
+                enemyHealth = enemy.GetComponent<LifeBase>();
 
-            //    //if (enemyHealth != null)
-            //    {
-            //        //enemyHealth.Damage(enemyHealth.Hp);
-            //        //ScoreManager.TotalScore--;
-            //        //MakerexplosionSound();
+                if (enemyHealth != null)
+                {
+                    enemyHealth.Damage(enemyHealth.Hp);
+                    ScoreManager.TotalScore--;
+                    MakerexplosionSound();
 
-            //    }
-            //    //if (enemyHealth.Hp == 0)
-            //    //{
-            //    //    AddNumKillEnemy();
-            //    //}
+                }
+                if (enemyHealth.Hp == 0)
+                {
+                    AddNumKillEnemy();
+                }
 
-            //    damagePlayer = true;
-            //}
+                damagePlayer = true;
+            }
 
             if (damagePlayer)
             {
-                
-                LifePlayer playerHealth = GetComponent<LifePlayer>();
+
+                playerHealth = GetComponent<LifeBase>();
 
                 if (playerHealth != null)
                 {
@@ -109,7 +114,7 @@ public class Ship : ScriptGlobal
 
                 }
             }
-           
+
         }
         base.OnCollisionEnter2D(collision);
     }

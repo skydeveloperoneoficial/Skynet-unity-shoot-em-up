@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 769e9dd8920dfee41958e6ae25b82f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
   timeDestroy: 18
   enemyShotSound: {fileID: 8300000, guid: b6c1d715a3ba73a4aa824456984e7b74, type: 3}
   waverate: 1.1

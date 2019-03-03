@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ShipEnemy : ScriptGlobal
+public class ShipEnemy : LifeBase
 {
     
     

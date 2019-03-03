@@ -6,7 +6,7 @@ namespace Assets.Scripts
     public class BasicMoviment2D : ScriptGlobal
     {
 
-        [SerializeField] private Vector2 speed = new Vector2();
+        [SerializeField] private Vector2 speed;
         [SerializeField] private Vector2 direction = new Vector2(0, 0).normalized;
 
         [SerializeField]private Vector2 movement;

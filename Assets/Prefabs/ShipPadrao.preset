@@ -38,6 +38,18 @@ Preset:
     value: ShipEnemy
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: projetile
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: SpawnProjetile
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Rateprojetile
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: hptxt
     value: 'LifeShip : '
     objectReference: {fileID: 0}

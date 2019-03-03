@@ -96,12 +96,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec70c8dc30f95f41b87ca25459bb693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 0
+  barlife: 0
+  speedX: 0
+  speedY: 0
+  timeToLive: 100
+  tagbject: 
+  taghit: 
+  projetileAnimator: {fileID: 0}
+  game_ObjectTarget: {fileID: 0}
+  damageSoundEffect: {fileID: 0}
+  Play_Projectile: {fileID: 0}
+  Animation_: 0
+  IsSetVelocity: 0
+  goToRight: 1
   damage: 1
   objectTag: ShipEnemy
   timeDestroy: 2
   score: 2
   explosionSound: {fileID: 8300000, guid: 59aae3e9277403d4aa2694897a26b7a5, type: 3}
-  isEnemyShot: 0
 --- !u!82 &3446644220488823187
 AudioSource:
   m_ObjectHideFlags: 0

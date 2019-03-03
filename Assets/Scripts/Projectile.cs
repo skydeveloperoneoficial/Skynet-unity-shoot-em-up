@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Projectile : ScriptGlobal
+public class Projectile : ProjetileBase
 {
 
     [SerializeField] private int damage;
@@ -12,6 +12,7 @@ public class Projectile : ScriptGlobal
     [SerializeField] private int score;
     [SerializeField]private AudioClip explosionSound;
     private Ship ship;
+    private LifeBase characterLife;
     #region Propriedades get Set
     public int Damage
     {
@@ -74,7 +75,7 @@ public class Projectile : ScriptGlobal
 
         if (collider.gameObject.tag == objectTag)
         {
-            LifePlayer characterLife = collider.gameObject.GetComponent<LifePlayer>();
+             characterLife = collider.gameObject.GetComponent<LifeBase>();
 
             if (characterLife != null)
             {
@@ -86,20 +87,23 @@ public class Projectile : ScriptGlobal
                     MakerexplosionSound();
                 }
                 Destroy(gameObject);//destroyProjetil
-               
-                
-                if (characterLife.Hp ==lifezero)
+
+
+                if (characterLife.Hp == lifezero)
                 {
                     ship.AddNumKillEnemy();
                     ScoreManager.AddScore(score);
                 }
-                
+
 
             }
-           
+
         }
         base.OnTriggerEnter2D(collider);
     }
 
-
+    protected override void OnAppyDamage()
+    {
+        
+    }
 }

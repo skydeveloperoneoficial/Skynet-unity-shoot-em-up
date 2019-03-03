@@ -26,10 +26,9 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: spawnPos
-    value: 
-    objectReference: {fileID: 2265985893820961352, guid: 2e6e1d72f692c0d4da839341343c6598,
-      type: 3}
+    propertyPath: spawnPos.Array.size
+    value: 0
+    objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: rateSpawn
     value: 6.68
