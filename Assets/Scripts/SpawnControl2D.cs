@@ -14,14 +14,15 @@ public enum StateDirectionSpawn
 public class SpawnControl2D : ScriptGlobal {
 
     [SerializeField] private Transform[] spawnPos;
-    [SerializeField] private float rateSpawn = 2f;
+    [SerializeField] private float rateSpawn = 2f,timespawn;
     [SerializeField] private float vRandomMin = 1.0f, vRandomMax = 1.0f, hRandomMin, hRandomMax;//Random Vertical and Horizontal
     [SerializeField] private string tagSpawn = "Spawn", tagPlayer = "ShipEnemy", tagenemy = "Enemy";
+   
     
 
     private bool isPositionPlayer = false;
 
-    public bool isSpawner;
+   [SerializeField]private bool isSpawner;
 
     public StateDirectionSpawn directionSpawn = StateDirectionSpawn.Disable;
     private Transform playerTransform= null;
@@ -145,7 +146,7 @@ public class SpawnControl2D : ScriptGlobal {
 
         if (isSpawner)
         {
-            InvokeRepeating(TagSpawn, rateSpawn, rateSpawn);
+            InvokeRepeating(TagSpawn, timespawn, rateSpawn);
         }
     }
     /// <summary>

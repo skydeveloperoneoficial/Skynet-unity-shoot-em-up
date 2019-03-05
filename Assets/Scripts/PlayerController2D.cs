@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 namespace Assets.Scripts
 {
+    enum SelectInput
+    {
+        InputMouseAxis,
+        InputAxis,
+        inputMouseRotation
+
+
+    }
     public class PlayerController2D : ScriptGlobal
     {
 
@@ -12,9 +20,10 @@ namespace Assets.Scripts
         protected string vertical = "Vertical";
         protected string moveMouseX = "Mouse X";//exo //Autor Skydevelopers
         protected string moveMouseY = "Mouse Y";//exo //Autor Skydevelopers
-
-
-        [SerializeField] private bool MouseAxis = false,MouseRotation_= false;
+         private float inputRotation2D;
+        [SerializeField] private SelectInput selectInput;
+        private float inputX, inputY;
+        //[SerializeField] private bool MouseAxis = false,MouseRotation_= false;
 
         /// <summary>
         /// 1 - The speed of the playerinput
@@ -26,7 +35,7 @@ namespace Assets.Scripts
         private Vector2 movement;
         private Vector2 mouseMoviment;
         private   float rotationMouse;
-         
+        
 
         // Update is called once per frame
 
@@ -54,7 +63,7 @@ namespace Assets.Scripts
         {
             float inputXMouse = CrossPlatformInputManager.GetAxis(moveMouseX);
             float inputYMouse = CrossPlatformInputManager.GetAxis(moveMouseY);
-            float inputRotation2D = CrossPlatformInputManager.GetAxis("Mouse ScrollWheel");
+             InputRotation2D = CrossPlatformInputManager.GetAxis("Mouse ScrollWheel");
 
             // mouse
 
@@ -62,7 +71,7 @@ namespace Assets.Scripts
                 speed.x * inputXMouse , //Autor Skydevelopers
                 speed.y * inputYMouse );//Autor Skydevelopers
 
-            rotationMouse += inputRotation2D;
+            rotationMouse += InputRotation2D;
         }
 
         public override void FixedUpdate()
@@ -77,18 +86,25 @@ namespace Assets.Scripts
 
             //Autor Skydevelopers
             //ativar mouse
-            if (MouseAxis)
+          
+            switch (selectInput)
             {
-                GetComponent<Rigidbody2D>().velocity = mouseMoviment;
+                case SelectInput.InputMouseAxis:
+                    GetComponent<Rigidbody2D>().velocity = mouseMoviment;
+                    break;
+                case SelectInput.InputAxis:
+                    GetComponent<Rigidbody2D>().velocity = movement;
+                    break;
+                case SelectInput.inputMouseRotation:
+                    GetComponent<Rigidbody2D>().rotation = rotationMouse;
+                    break;
+                default:
+                    break;
             }
-            if (MouseRotation_)
-            {
-                GetComponent<Rigidbody2D>().rotation = rotationMouse;
-            }
-            
+
         }
 
-        
+
 
         public Vector2 Speed
         {
@@ -96,12 +112,21 @@ namespace Assets.Scripts
             set { speed = value; }
         }
 
-        public bool ActiveMouse
+        
+
+        public float InputRotation2D
         {
-            get { return MouseAxis; }
-            set { MouseAxis = value; }
+            get
+            {
+                return inputRotation2D;
+            }
+
+            set
+            {
+                inputRotation2D = value;
+            }
         }
-
-
+        public float InputX { get { return inputX; } set { inputX = value; } }
+        public float InputY { get { return inputY; } set { inputY = value; } }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Projectile : ProjetileBase
+public class Projectile : LifeBase
 {
 
     [SerializeField] private int damage;
@@ -45,7 +45,7 @@ public class Projectile : ProjetileBase
     {
 
         findObjs();
-        CheckDestroyGameObject();
+        
         base.Start();
     }
     private void CheckDestroyGameObject()
@@ -60,6 +60,7 @@ public class Projectile : ProjetileBase
     // Update is called once per frame
     public override void Update()
     {
+        CheckDestroyGameObject();
         base.Update();
     }
     public void MakerexplosionSound()
@@ -102,8 +103,5 @@ public class Projectile : ProjetileBase
         base.OnTriggerEnter2D(collider);
     }
 
-    protected override void OnAppyDamage()
-    {
-        
-    }
+   
 }

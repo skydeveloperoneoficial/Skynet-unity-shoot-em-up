@@ -12,22 +12,96 @@ public class ShipEnemy : LifeBase
     
     [SerializeField]private int timeDestroy;
     [SerializeField] private AudioClip enemyShotSound;
-    //Wave Bullet Enemy
-    [SerializeField]private float waverate=1.1f;//Padrao
-    [SerializeField] private float wavecooldown=4.0f;//Padrao
-    private float thisValue= 0;
+    //Private
+    //variable
+    //Serealizable Variable Private
+    [SerializeField]
+    private Transform[] spawnsProjetiles;
+    [SerializeField] private GameObject[] projetiles;
+    [SerializeField] private float Rateprojetile;
+    private float nextProjetile;
+    [SerializeField]private bool shoot = true;
+   
 
     private LimitObject limitObject;
     private Ship ship;
 
+
+
     #region propriedades get Set
-    
-    
+    public GameObject[] Projetiles
+    {
+        get
+        {
+            return projetiles;
+        }
+
+        set
+        {
+            projetiles = value;
+        }
+    }
+
+    public float Rateprojetile1
+    {
+        get
+        {
+            return Rateprojetile;
+        }
+
+        set
+        {
+            Rateprojetile = value;
+        }
+    }
+
+    public AudioClip EnemyShotSound
+    {
+        get
+        {
+            return enemyShotSound;
+        }
+
+        set
+        {
+            enemyShotSound = value;
+        }
+    }
+
+    public int TimeDestroy
+    {
+        get
+        {
+            return timeDestroy;
+        }
+
+        set
+        {
+            timeDestroy = value;
+        }
+    }
+
+    public bool Shoot
+    {
+        get
+        {
+            return shoot;
+        }
+
+        set
+        {
+            shoot = value;
+        }
+    }
+
     #endregion
     // Start is called before the first frame update
     protected override void Start()
     {
-  
+        if (Shoot)
+        {
+            InvokeRepeating("Fire", Rateprojetile1, Rateprojetile1);
+        }
         OnTimeDestroy();
         FindObject();
 
@@ -51,30 +125,21 @@ public class ShipEnemy : LifeBase
 
     }
 
-    // Update is called once per frame
-    public override void Update()
-    {
-        
-        if (wavecooldown > thisValue)
-        {
-            wavecooldown -= Time.deltaTime;
-        }
-
-
-        if (wavecooldown <= thisValue)
-        {
-            waverate = wavecooldown;
-            //MakerEnemyShotSound();
-
-
-        }
-
-        base.Update();
-    }
+   
     public void OnTimeDestroy()
     {
-        Destroy(gameObject, timeDestroy);
+        Destroy(gameObject, TimeDestroy);
     }
-   
+    private void Fire()
+    {
+        for (int i = 0; i < spawnsProjetiles.Length; i++)
+        {
+            Instantiate(projetiles[0], spawnsProjetiles[0].position, spawnsProjetiles[0].rotation);
+            Instantiate(projetiles[1], spawnsProjetiles[1].position, spawnsProjetiles[1].rotation);
+            MakerEnemyShotSound();
+        }
+    }
+
+
 
 }

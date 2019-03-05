@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 12523939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.017, z: 0}
-  m_LocalScale: {x: 0.09639094, y: 0.031384923, z: 0.031384923}
+  m_LocalScale: {x: 0.064051874, y: 0.020855313, z: 0.020855313}
   m_Children:
   - {fileID: 852622679}
   m_Father: {fileID: 0}
@@ -69,7 +69,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.039298296, y: 0.107949615}
+  m_Offset: {x: 0.025591135, y: 0.023753524}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.9967332, y: 4.0497293}
+  m_Size: {x: 4.0241475, y: 4.0076323}
   m_EdgeRadius: 0
 --- !u!114 &5308824069445748245
 MonoBehaviour:
@@ -96,21 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   barlife: 0
-  speedX: 100
-  speedY: 100
-  timeToLive: 100
-  tagbject: 
-  taghit: 
-  projetileAnimator: {fileID: 0}
-  game_ObjectTarget: {fileID: 0}
-  damageSoundEffect: {fileID: 0}
-  Play_Projectile: {fileID: 0}
-  Animation_: 0
-  IsSetVelocity: 0
-  goToRight: 1
   damage: 1
   objectTag: Ship
-  timeDestroy: 10
+  timeDestroy: 8
   score: 0
   explosionSound: {fileID: 8300000, guid: 59aae3e9277403d4aa2694897a26b7a5, type: 3}
 --- !u!114 &5157206295879229071

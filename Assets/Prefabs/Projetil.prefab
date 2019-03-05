@@ -98,18 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   barlife: 0
-  speedX: 0
-  speedY: 0
-  timeToLive: 100
-  tagbject: 
-  taghit: 
-  projetileAnimator: {fileID: 0}
-  game_ObjectTarget: {fileID: 0}
-  damageSoundEffect: {fileID: 0}
-  Play_Projectile: {fileID: 0}
-  Animation_: 0
-  IsSetVelocity: 0
-  goToRight: 1
   damage: 1
   objectTag: ShipEnemy
   timeDestroy: 2
@@ -227,6 +215,7 @@ MonoBehaviour:
   direction: {x: 1, y: 0}
   movement: {x: 0, y: 0}
   disableMove: 1
+  disableRotation: 0
 --- !u!1 &427718609
 GameObject:
   m_ObjectHideFlags: 0

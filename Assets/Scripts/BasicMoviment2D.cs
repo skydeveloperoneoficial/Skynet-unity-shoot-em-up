@@ -11,6 +11,8 @@ namespace Assets.Scripts
 
         [SerializeField]private Vector2 movement;
         [SerializeField]private  bool disableMove= false;
+        private float rotatiomObj;
+        [SerializeField] private bool disableRotation = false;
 
         public override void Update()
         {
@@ -21,11 +23,20 @@ namespace Assets.Scripts
 
         private void CheckMoviment()
         {
-            if(disableMove)
+            if (disableRotation)
+            {
+                rotatiomObj += movement.x;
+                rotatiomObj += movement.y;
+            }
+            
+            if (disableMove)
             //2D
+            
             movement = new Vector2(
                  speed.x * direction.x,
                  speed.y * direction.y);
+            
+
         }
 
         public override void FixedUpdate()
@@ -38,6 +49,7 @@ namespace Assets.Scripts
             if (disableMove)
             {
                 GetComponent<Rigidbody2D>().velocity = movement;
+                GetComponent<Rigidbody2D>().rotation = rotatiomObj;
             }
             
         }

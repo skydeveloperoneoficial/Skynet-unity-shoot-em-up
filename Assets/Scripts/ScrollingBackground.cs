@@ -13,6 +13,7 @@ public class ScrollingBackground : MonoBehaviour {
 
     private Vector3 PositionCam;
     private Camera cam;
+    public static bool Scroling= true;
 
     private void Awake()
     {
@@ -24,6 +25,10 @@ public class ScrollingBackground : MonoBehaviour {
 
     void Update ()
     {
+        if (!Scroling)
+        {
+            Speed = 0;
+        }
         foreach (var item in sprites)
         {
             if(Dir == Direction.Left)

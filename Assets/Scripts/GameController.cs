@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameController : ScriptGlobal
 {
- 
 
-  
+    private int[] waves;
+    
 
     protected override void Start()
     {

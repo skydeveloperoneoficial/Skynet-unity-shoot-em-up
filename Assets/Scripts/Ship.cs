@@ -6,9 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Ship : LifeBase
 {
-    // Start is called before the first frame update
-    //private BulletManagement bulletManagement;
-    //private LifePlayer characterLife;
+  
     [SerializeField]private AudioClip playerShotSound;
     [SerializeField] private AudioClip explosionSound;
     [SerializeField] private string tagobj;
