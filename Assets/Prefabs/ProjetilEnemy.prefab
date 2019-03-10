@@ -117,6 +117,7 @@ MonoBehaviour:
   direction: {x: -1, y: 0}
   movement: {x: 0, y: 0}
   disableMove: 1
+  disableRotation: 0
 --- !u!1 &852622678
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +187,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 01a8a26c89532cc45af988de6e8e3f11, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.57653815, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
