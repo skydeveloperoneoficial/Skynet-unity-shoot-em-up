@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 namespace Assets.Scripts
 {
-    enum SelectInput
+    public enum SelectInput
     {
         InputMouseAxis,
         InputAxis,

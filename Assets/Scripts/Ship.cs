@@ -7,8 +7,8 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Ship : LifeBase
 {
   
-    [SerializeField]private AudioClip playerShotSound;
-    [SerializeField] private AudioClip explosionSound;
+    
+    [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private string tagobj;
     [SerializeField] private GameObject projetile;
     [SerializeField] private Transform SpawnProjetile;
@@ -17,32 +17,36 @@ public class Ship : LifeBase
     private ShipEnemy enemy;
     private float nextProjetile;
 
-    // hit
-    private float currentTimeTohit;
-    [SerializeField] private string hptxt,killTxt,projetiletxtMax, projetiletxtMin;
-    [SerializeField]private Text UIkill, UIhp,UIprojetileMax,UIprojetileMin;
-    private int killEnemy;
+
+    [SerializeField] private string[] txts;
+    [SerializeField]private Text[] texts;
+    [SerializeField]private int killEnemy;
     [SerializeField]private int amountProjetileMax;
     [SerializeField]private int currentAmountProjetile;
-    [SerializeField]private bool StopProjetile= true;
+    [SerializeField]private bool stopProjetile= true;
     [SerializeField]private bool StopSoundEfectProjetile= true;
+   
 
     
+    [SerializeField] private int damagerPlayer, damagerEnemy;
+
+    private Animation animation_;
    
-    protected override void Start()
+  
+    public override void Awake()
     {
-
-
+        animation_ = FindObjectOfType(typeof(Animation)) as Animation;
         
-        base.Start();
+        base.Awake();
     }
+
     public void MakePlayerShotSound()
     {
-        MakeSound(playerShotSound);
+        MakeSound(audioClips[0]);
     }
     public void MakerexplosionSound()
     {
-        MakeSound(explosionSound);
+        MakeSound(audioClips[1]);
     }
 
     private void MakeSound(AudioClip originalClip)
@@ -52,14 +56,14 @@ public class Ship : LifeBase
     public void HUDSTxt()
     {
         //Hp Do player
-        UIhp.text = hptxt + Hp;
+        texts[0].text = txts[0] + Hp;
         //quantidade maxima de Tiro;
-        UIprojetileMax.text = projetiletxtMax + currentAmountProjetile;
+        texts[2].text = txts[1] + currentAmountProjetile;
         // quantidade Tiro min
-        UIprojetileMin.text = projetiletxtMin + amountProjetileMax;
+        //texts[2].text = txts[2] + amountProjetileMax;
 
         //Inimgos Mortos
-        //kill.text = killTxt + killEnemy;
+        //texts[3].text = txts[3] + killEnemy;
     }
     //Add projetile UI
     public void addProjetileUI()
@@ -83,7 +87,7 @@ public class Ship : LifeBase
     {
         if (currentAmountProjetile == amountProjetileMax)
         {
-            StopProjetile = false;
+            stopProjetile = false;
             StopSoundEfectProjetile = false;
             
         }
@@ -104,15 +108,12 @@ public class Ship : LifeBase
             nextProjetile = Time.time + Rateprojetile;
             Instantiate(projetile, SpawnProjetile.position,SpawnProjetile.rotation);
             addProjetileUI();
-            if (StopSoundEfectProjetile)
-            {
-                MakePlayerShotSound();
-            }
-            
-            
-
-
+            MakePlayerShotSound();
         }
+    }
+    public void PlayAnimation()
+    {
+        animation_.Play("PlayerAnimation");
     }
 
     // Colisoes  ship com o ShipEnemy
@@ -132,7 +133,7 @@ public class Ship : LifeBase
                 
                 if (enemyHealth != null)
                 {
-                    enemyHealth.Damage(enemyHealth.Hp);
+                    enemyHealth.Damage(damagerEnemy);
                     ScoreManager.TotalScore--;
                     MakerexplosionSound();
                     
@@ -152,7 +153,13 @@ public class Ship : LifeBase
 
                 if (playerHealth != null)
                 {
-                    playerHealth.Damage(1);
+
+                    
+                    playerHealth.Damage(damagerPlayer);
+
+
+                    PlayAnimation();
+
 
                 }
             }
@@ -160,7 +167,7 @@ public class Ship : LifeBase
         }
         base.OnCollisionEnter2D(collision);
     }
-    private void Recaregar()
+    private void Reload()
     {
         // carega o  o tiro no limite maximo
 
@@ -168,26 +175,35 @@ public class Ship : LifeBase
         {
             int zero = 0;
             currentAmountProjetile = zero;
-            StopProjetile = true;
+            stopProjetile = true;
             StopSoundEfectProjetile = true;
+
+        }
+    }
+    private void CheckShotLimitMax()
+    {
+        if (currentAmountProjetile == amountProjetileMax)
+        {
+            Reload();
+        }
+    }
+    private void ShotProjetile()
+    {
+        if (stopProjetile)
+        {
+            shootShip();
+
 
         }
     }
     public override void Update()
     {
+        
         // verifica se o  tiro  esta no limite maximo
-        if (currentAmountProjetile == amountProjetileMax)
-        {
-            Recaregar();
-        }
-            
+        CheckShotLimitMax();
+        
         HUDSTxt();
-        if (StopProjetile)
-        {
-            shootShip();
-            
-
-        }
+        ShotProjetile();
         
         base.Update();
     }

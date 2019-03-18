@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 418934046134824392}
   - component: {fileID: 3446644220488823187}
   - component: {fileID: 978942485571004092}
+  - component: {fileID: 1002507309683880449}
   m_Layer: 0
   m_Name: Projetil
   m_TagString: Untagged
@@ -216,6 +217,22 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   disableMove: 1
   disableRotation: 0
+--- !u!111 &1002507309683880449
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163215371}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 4857a2a5e9a45e24a825ebc190f9ca14, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &427718609
 GameObject:
   m_ObjectHideFlags: 0
