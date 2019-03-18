@@ -11,7 +11,7 @@ public class ShipEnemy : LifeBase
     private BasicMoviment2D enemyMove;
     
     [SerializeField]private int timeDestroy;
-    [SerializeField] private AudioClip enemyShotSound;
+    
     //Private
     //variable
     //Serealizable Variable Private
@@ -21,9 +21,9 @@ public class ShipEnemy : LifeBase
     [SerializeField] private float Rateprojetile;
     private float nextProjetile;
     [SerializeField]private bool shoot = true;
-   
+    private AudioSource audioSource;
 
-    private LimitObject limitObject;
+    
     private Ship ship;
 
 
@@ -55,18 +55,7 @@ public class ShipEnemy : LifeBase
         }
     }
 
-    public AudioClip EnemyShotSound
-    {
-        get
-        {
-            return enemyShotSound;
-        }
 
-        set
-        {
-            enemyShotSound = value;
-        }
-    }
 
     public int TimeDestroy
     {
@@ -107,20 +96,14 @@ public class ShipEnemy : LifeBase
 
     }
 
-    public void MakerEnemyShotSound()
-    {
-        MakeSound(enemyShotSound);
-    }
-    private void MakeSound(AudioClip originalClip)
-    {
-        AudioSource.PlayClipAtPoint(originalClip, transform.position);
-    }
+
+    
     private void FindObject()
     {
         enemyMove = FindObjectOfType(typeof(BasicMoviment2D)) as BasicMoviment2D;
 
         ship = FindObjectOfType(typeof(Ship)) as Ship;
-
+        audioSource = FindObjectOfType(typeof(AudioSource)) as AudioSource;
         
 
     }
@@ -136,7 +119,7 @@ public class ShipEnemy : LifeBase
         {
             Instantiate(projetiles[0], spawnsProjetiles[0].position, spawnsProjetiles[0].rotation);
             Instantiate(projetiles[1], spawnsProjetiles[1].position, spawnsProjetiles[1].rotation);
-            MakerEnemyShotSound();
+            audioSource.Play();
         }
     }
 

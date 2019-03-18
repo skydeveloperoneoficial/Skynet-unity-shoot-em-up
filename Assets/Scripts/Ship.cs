@@ -8,7 +8,7 @@ public class Ship : LifeBase
 {
   
     
-    [SerializeField] private AudioClip[] audioClips;
+    
     [SerializeField] private string tagobj;
     [SerializeField] private GameObject projetile;
     [SerializeField] private Transform SpawnProjetile;
@@ -24,30 +24,16 @@ public class Ship : LifeBase
     [SerializeField]private int amountProjetileMax;
     [SerializeField]private int currentAmountProjetile;
     [SerializeField]private bool stopProjetile= true;
-    [SerializeField]private bool StopSoundEfectProjetile= true;
+   
    
 
     
     [SerializeField] private int damagerPlayer, damagerEnemy;
 
-    private Animation animation_;
+    
    
   
-    public override void Awake()
-    {
-        animation_ = FindObjectOfType(typeof(Animation)) as Animation;
-        
-        base.Awake();
-    }
-
-    public void MakePlayerShotSound()
-    {
-        MakeSound(audioClips[0]);
-    }
-    public void MakerexplosionSound()
-    {
-        MakeSound(audioClips[1]);
-    }
+   
 
     private void MakeSound(AudioClip originalClip)
     {
@@ -88,7 +74,7 @@ public class Ship : LifeBase
         if (currentAmountProjetile == amountProjetileMax)
         {
             stopProjetile = false;
-            StopSoundEfectProjetile = false;
+            
             
         }
 
@@ -108,13 +94,10 @@ public class Ship : LifeBase
             nextProjetile = Time.time + Rateprojetile;
             Instantiate(projetile, SpawnProjetile.position,SpawnProjetile.rotation);
             addProjetileUI();
-            MakePlayerShotSound();
+            SoundEffectControl.Instance.MakePlayerShotSound();
         }
     }
-    public void PlayAnimation()
-    {
-        animation_.Play("PlayerAnimation");
-    }
+   
 
     // Colisoes  ship com o ShipEnemy
 
@@ -135,8 +118,8 @@ public class Ship : LifeBase
                 {
                     enemyHealth.Damage(damagerEnemy);
                     ScoreManager.TotalScore--;
-                    MakerexplosionSound();
-                    
+                    SoundEffectControl.Instance.MakeExplosionSound();
+
                 }
                 if (enemyHealth.Hp == 0)
                 {
@@ -158,7 +141,7 @@ public class Ship : LifeBase
                     playerHealth.Damage(damagerPlayer);
 
 
-                    PlayAnimation();
+                    
 
 
                 }
@@ -171,12 +154,12 @@ public class Ship : LifeBase
     {
         // carega o  o tiro no limite maximo
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R)|| CrossPlatformInputManager.GetButton("Fire2"))
         {
             int zero = 0;
             currentAmountProjetile = zero;
             stopProjetile = true;
-            StopSoundEfectProjetile = true;
+            
 
         }
     }

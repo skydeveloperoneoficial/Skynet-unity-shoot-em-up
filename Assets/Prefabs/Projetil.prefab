@@ -99,11 +99,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   barlife: 0
+  taghit: 
+  Tagobject: 
+  projetileAnimator: {fileID: 0}
+  Animation_: 0
+  goToRight: 0
   damage: 1
   objectTag: ShipEnemy
   timeDestroy: 2
   score: 2
-  explosionSound: {fileID: 8300000, guid: 59aae3e9277403d4aa2694897a26b7a5, type: 3}
 --- !u!82 &3446644220488823187
 AudioSource:
   m_ObjectHideFlags: 0

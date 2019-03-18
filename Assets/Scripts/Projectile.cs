@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Projectile : LifeBase
+public class Projectile : ProjetileBase
 {
 
     [SerializeField] private int damage;
     [SerializeField] private string objectTag;
     [SerializeField] private int timeDestroy;
     [SerializeField] private int score;
-    [SerializeField]private AudioClip explosionSound;
+    
     private Ship ship;
     private LifeBase characterLife;
     #region Propriedades get Set
@@ -63,14 +63,7 @@ public class Projectile : LifeBase
         CheckDestroyGameObject();
         base.Update();
     }
-    public void MakerexplosionSound()
-    {
-        MakeSound(explosionSound);
-    }
-    private void MakeSound(AudioClip originalClip)
-    {
-        AudioSource.PlayClipAtPoint(originalClip, transform.position);
-    }
+   
     public override void OnTriggerEnter2D(Collider2D collider)
     {
 
@@ -85,7 +78,9 @@ public class Projectile : LifeBase
                 // Verifica se a vida do player  = zero
                 if (characterLife.Hp == lifezero)
                 {
-                    MakerexplosionSound();
+
+                    SoundEffectControl.Instance.MakeExplosionSound();
+
                 }
                 Destroy(gameObject);//destroyProjetil
 
@@ -93,6 +88,7 @@ public class Projectile : LifeBase
                 if (characterLife.Hp == lifezero)
                 {
                     ship.AddNumKillEnemy();
+                    
                     ScoreManager.AddScore(score);
                 }
 
@@ -103,5 +99,8 @@ public class Projectile : LifeBase
         base.OnTriggerEnter2D(collider);
     }
 
-   
+    protected override void OnAppyDamage()
+    {
+        
+    }
 }
