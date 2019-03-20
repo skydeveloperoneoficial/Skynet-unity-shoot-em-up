@@ -156,14 +156,6 @@ MonoBehaviour:
   life: 4
   barlife: 0
   timeDestroy: 18
-  spawnsProjetiles:
-  - {fileID: 251791529546532819}
-  - {fileID: 526007331344475488}
-  projetiles:
-  - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
-  - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
-  Rateprojetile: 5
-  shoot: 1
 --- !u!58 &2873870423549851812
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -204,11 +196,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2265985893820961357}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a12b05833bcc7c46843af8b89d98a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnsProjetiles:
+  - {fileID: 251791529546532819}
+  - {fileID: 526007331344475488}
+  projetiles:
+  - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
+  - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
+  rateprojetile: 2.2
+  shoot: 1
 --- !u!111 &776462226082632995
 Animation:
   m_ObjectHideFlags: 0
@@ -218,9 +218,9 @@ Animation:
   m_GameObject: {fileID: 2265985893820961357}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 55901c09e6f9fd649a5c9e19220696ab, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations:
-  - {fileID: 7400000, guid: 55901c09e6f9fd649a5c9e19220696ab, type: 2}
+  - {fileID: 0}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -237,7 +237,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b6c1d715a3ba73a4aa824456984e7b74, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.499
+  m_Volume: 0.419
   m_Pitch: 1
   Loop: 0
   Mute: 0

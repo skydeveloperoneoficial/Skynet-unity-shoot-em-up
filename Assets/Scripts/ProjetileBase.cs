@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// hit   com o animator
 public abstract class ProjetileBase : LifeBase
 {
     // visible inspector,private
@@ -13,18 +14,8 @@ public abstract class ProjetileBase : LifeBase
     [SerializeField] private Animator projetileAnimator;
 
     [SerializeField] private bool Animation_ = false;
-    [SerializeField] private bool goToRight = true;
-    private Animator projetileAnimatorHit;
-
-    public override void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.tag == Tagobject)
-        {
-            ApplyDamege(collider.gameObject);
-        }
-        base.OnTriggerEnter2D(collider);
-    }
-
+    
+   
     public virtual void ApplyDamege(GameObject gameObject)
     {
         OnAppyDamage();
