@@ -6,7 +6,8 @@ public abstract class LifeBase : ScriptGlobal
 {
     [SerializeField] private int life= 1;
     [SerializeField] private float barlife;
-
+    [SerializeField]private SpriteRenderer sprite_;
+    [SerializeField] private Color damageColor;
     public void Damage(int damageCount)
     {
         life -= damageCount;
@@ -16,6 +17,10 @@ public abstract class LifeBase : ScriptGlobal
 
             // Dead!
             OnDestroy();
+        }
+        else
+        {
+            StartCoroutine(TakingDamage());
         }
 
     }
@@ -29,6 +34,10 @@ public abstract class LifeBase : ScriptGlobal
         {
             //Dead
             OnDestroy();
+        }
+        else
+        {
+            StartCoroutine(TakingDamage());
         }
     }
     public virtual void OnDestroy()
@@ -63,5 +72,28 @@ public abstract class LifeBase : ScriptGlobal
             barlife = value;
         }
     }
+
+    public SpriteRenderer Sprite_
+    {
+        get
+        {
+            return sprite_;
+        }
+
+        set
+        {
+            sprite_ = value;
+        }
+    }
     #endregion
+    private IEnumerator TakingDamage()
+    {
+        sprite_.color = damageColor ;
+
+        yield return new WaitForSeconds(0.1f);
+        sprite_.color = Color.white;
+
+
+
+    }
 }

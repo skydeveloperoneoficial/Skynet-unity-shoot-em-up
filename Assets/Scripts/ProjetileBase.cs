@@ -9,9 +9,9 @@ public abstract class ProjetileBase : LifeBase
     // visible inspector,private
     
    
-    [SerializeField] private string taghit, Tagobject;
+    [SerializeField] private string taghit;
 
-    [SerializeField] private Animator projetileAnimator;
+    [SerializeField] private Animator projetileAnimatorHit;
 
     [SerializeField] private bool Animation_ = false;
     
@@ -31,7 +31,7 @@ public abstract class ProjetileBase : LifeBase
         {
             try
             {
-                projetileAnimator.SetTrigger(Taghit);
+                projetileAnimatorHit.SetTrigger(Taghit);
             }
             catch
             {

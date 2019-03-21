@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 4
   barlife: 0
+  sprite_: {fileID: 2265985893365383325}
   timeDestroy: 18
 --- !u!58 &2873870423549851812
 CircleCollider2D:
