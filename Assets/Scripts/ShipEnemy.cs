@@ -31,7 +31,7 @@ public class ShipEnemy : LifeBase
 
     #endregion
     // Start is called before the first frame update
-    protected override void Start()
+    protected  void Start()
     {
        
         OnTimeDestroy();

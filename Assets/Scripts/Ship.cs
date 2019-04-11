@@ -94,6 +94,7 @@ public class Ship : LifeBase
             nextProjetile = Time.time + Rateprojetile;
             Instantiate(projetile, SpawnProjetile.position,SpawnProjetile.rotation);
             addProjetileUI();
+            
             SoundEffectControl.Instance.MakePlayerShotSound();
         }
     }
@@ -101,7 +102,7 @@ public class Ship : LifeBase
 
     // Colisoes  ship com o ShipEnemy
 
-    public override void OnCollisionEnter2D(Collision2D collision)
+   private void OnCollisionEnter2D(Collision2D collision)
     {
         
         if (collision.gameObject.tag == tagobj)
@@ -148,7 +149,7 @@ public class Ship : LifeBase
             }
 
         }
-        base.OnCollisionEnter2D(collision);
+        
     }
     private void Reload()
     {
@@ -179,7 +180,7 @@ public class Ship : LifeBase
 
         }
     }
-    public override void Update()
+    private void Update()
     {
         
         // verifica se o  tiro  esta no limite maximo
@@ -188,7 +189,7 @@ public class Ship : LifeBase
         HUDSTxt();
         ShotProjetile();
         
-        base.Update();
+        
     }
  
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Assets.Scripts
 {
-    public class BasicMoviment2D : ScriptGlobal
+    public class BasicMoviment2D :  MonoBehaviour
     {
 
         [SerializeField] private Vector2 speed;
@@ -14,11 +14,11 @@ namespace Assets.Scripts
         private float rotatiomObj;
         [SerializeField] private bool disableRotation = false;
 
-        public override void Update()
+        private  void Update()
         {
             
             CheckMoviment();
-            base.Update();
+            
         }
 
         private void CheckMoviment()
@@ -39,10 +39,10 @@ namespace Assets.Scripts
 
         }
 
-        public override void FixedUpdate()
+        private void FixedUpdate()
         {
             GetObject();
-            base.FixedUpdate();
+            
         }
         private void GetObject()
         {

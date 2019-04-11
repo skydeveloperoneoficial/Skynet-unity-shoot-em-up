@@ -11,7 +11,7 @@ public enum StateDirectionSpawn
     
 }
 
-public class SpawnControl2D : ScriptGlobal {
+public class SpawnControl2D : MonoBehaviour {
 
     [SerializeField] private Transform[] spawnPos;
     [SerializeField] private float rateSpawn = 2f,timespawn;
@@ -134,7 +134,7 @@ public class SpawnControl2D : ScriptGlobal {
 
 
     // Use this for initialization
-    protected override void Start()
+    protected  void Start()
     {
         ActiveSpawner();
        

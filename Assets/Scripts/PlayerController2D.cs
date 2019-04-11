@@ -12,7 +12,7 @@ namespace Assets.Scripts
 
 
     }
-    public class PlayerController2D : ScriptGlobal
+    public class PlayerController2D : MonoBehaviour
     {
 
 
@@ -39,12 +39,13 @@ namespace Assets.Scripts
 
         // Update is called once per frame
 
-        public override void Update()
+        private  void Update()
         {
             CheckInputAxis();
             CheckInputMouse();
-            base.Update();
+           
         }
+       
         public void CheckInputAxis()
         {
             // 3 - Retrieve axis information
@@ -74,10 +75,10 @@ namespace Assets.Scripts
             rotationMouse += InputRotation2D;
         }
 
-        public override void FixedUpdate()
+        public void FixedUpdate()
         {
             GetObj();
-            base.FixedUpdate();
+            
         }
         private void GetObj()
         {

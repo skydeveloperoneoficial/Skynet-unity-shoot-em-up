@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 2873870423549851812}
   - component: {fileID: 3079035943164375176}
   - component: {fileID: 4766780240833790861}
-  - component: {fileID: 776462226082632995}
   - component: {fileID: 5345880825378123765}
   m_Layer: 0
   m_Name: ShipEnemy
@@ -153,9 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 769e9dd8920dfee41958e6ae25b82f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 4
+  life: 5
   barlife: 0
   sprite_: {fileID: 2265985893365383325}
+  damageColor: {r: 0, g: 0, b: 0, a: 0}
   timeDestroy: 18
 --- !u!58 &2873870423549851812
 CircleCollider2D:
@@ -170,9 +170,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.058529973, y: 0.08779502}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.8999554
+  m_Radius: 0.4
 --- !u!114 &3079035943164375176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,22 +210,6 @@ MonoBehaviour:
   - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
   rateprojetile: 2.2
   shoot: 1
---- !u!111 &776462226082632995
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2265985893820961357}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 0}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!82 &5345880825378123765
 AudioSource:
   m_ObjectHideFlags: 0

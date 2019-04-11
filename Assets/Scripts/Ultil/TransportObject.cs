@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TransportObject : ScriptGlobal
+public class TransportObject : MonoBehaviour
 {
     private Camera cam_;
     [SerializeField]private Transform point;
     // Start is called before the first frame update
-    protected override void Start()
+    protected  void Start()
     {
         cam_ = Camera.main;
         
-        base.Start();
+       
     }
 
     // Update is called once per frame
-    public override void Update()
+    public  void Update()
     {
-        base.Update();
+        
     }
-    public override void OnCollisionEnter2D(Collision2D collision)
+    public  void OnCollisionEnter2D(Collision2D collision)
     {
         if (point == null)
         {
@@ -34,6 +34,6 @@ public class TransportObject : ScriptGlobal
 
         
         
-        base.OnCollisionEnter2D(collision);
+        
     }
 }

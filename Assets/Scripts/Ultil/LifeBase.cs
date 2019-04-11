@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class LifeBase : ScriptGlobal
+public abstract class LifeBase : MonoBehaviour
 {
     [SerializeField] private int life= 1;
     [SerializeField] private float barlife;

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowObject : ScriptGlobal
+public class FollowObject : MonoBehaviour
 { 
     [SerializeField] private GameObject target;
     private Vector3 positionTarget;
     [SerializeField]private float speed;
 
     // Update is called once per frame
-    public override void Update()
+    public  void Update()
     { 
         Follow();
-        base.Update();
+        
     }
     private void Follow()
     {

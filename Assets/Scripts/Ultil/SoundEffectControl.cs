@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundEffectControl : ScriptGlobal {
+public class SoundEffectControl : MonoBehaviour {
     public static SoundEffectControl Instance;
     public AudioClip[] SoundEffect;
     [Range(0, 100)] [SerializeField]private float VolSoundEffect;
    
     // Use this for initialization
-    public override void Awake()
+    private void Awake()
     {
         if (Instance != null)
         {
@@ -16,7 +16,7 @@ public class SoundEffectControl : ScriptGlobal {
         }
 
         Instance = this;
-        base.Awake();
+        
     }
     
     public void MakeExplosionSound()

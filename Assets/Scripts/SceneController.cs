@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public abstract class SceneController : ScriptGlobal {
+public abstract class SceneController : MonoBehaviour {
 
     //Autor SkyDeveloper
     public   void SetScene(string nextscene)
@@ -14,7 +14,7 @@ public abstract class SceneController : ScriptGlobal {
     {
         SceneManager.LoadSceneAsync(nextscene);
     }
-    protected override void Start()
+    protected  void Start()
     {
        
     }

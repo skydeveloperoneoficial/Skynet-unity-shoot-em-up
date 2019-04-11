@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjetileManager : ScriptGlobal
+public class ProjetileManager : MonoBehaviour
 {
 
     //Serealizable Variable Private
@@ -14,12 +14,12 @@ public class ProjetileManager : ScriptGlobal
     [SerializeField] private bool shoot = true;
     private AudioSource audioSource;
 
-    protected override void Start()
+    protected void Start()
     {
         shootProjetile();
         
         FindObject();
-        base.Start();
+        
     }
     private void FindObject()
     {

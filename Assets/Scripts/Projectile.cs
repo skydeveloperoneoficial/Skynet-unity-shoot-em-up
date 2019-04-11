@@ -41,12 +41,12 @@ public class Projectile : ProjetileBase
     }
     #endregion
     // Start is called before the first frame update
-    protected override void Start()
+    protected  void Start()
     {
 
         findObjs();
         
-        base.Start();
+        
     }
     private void CheckDestroyGameObject()
     {
@@ -58,13 +58,13 @@ public class Projectile : ProjetileBase
         ship = FindObjectOfType(typeof(Ship)) as Ship;
     }
     // Update is called once per frame
-    public override void Update()
+    public  void Update()
     {
         CheckDestroyGameObject();
-        base.Update();
+        
     }
    
-    public override void OnTriggerEnter2D(Collider2D collider)
+    private  void OnTriggerEnter2D(Collider2D collider)
     {
 
         if (collider.gameObject.tag == objectTag)
@@ -96,7 +96,7 @@ public class Projectile : ProjetileBase
             }
 
         }
-        base.OnTriggerEnter2D(collider);
+        
     }
 
     protected override void OnAppyDamage()

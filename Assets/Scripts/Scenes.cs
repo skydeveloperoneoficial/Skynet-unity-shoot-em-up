@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Scenes : SceneController
 {
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
+        
     }
-    public override void Update()
+    public void Update()
     {
-        base.Update();
+        
     }
 
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ScoreManager : ScriptGlobal
+public class ScoreManager : MonoBehaviour
 {
     public static int TotalScore;
     public static int multiplication;
@@ -10,20 +10,20 @@ public class ScoreManager : ScriptGlobal
 
     public Text text;
 
-    public override void Awake()
+    public  void Awake()
     {
         TotalScore = 0;
         multiplication = 10;
-        base.Awake();
+       
     }
 
 
 
 
-    public override void Update()
+    public  void Update()
     {
         HUDScore();
-        base.Update();
+        
     }
     public void HUDScore()
     {
