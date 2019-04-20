@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class LifeBase : MonoBehaviour
 {
-    [SerializeField] private int life= 1;
+    [SerializeField] private int life;
     [SerializeField] private float barlife;
     [SerializeField]private SpriteRenderer sprite_;
     [SerializeField] private Color damageColor;

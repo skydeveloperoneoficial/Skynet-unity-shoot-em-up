@@ -10,9 +10,15 @@ public class Projectile : ProjetileBase
     [SerializeField] private string objectTag;
     [SerializeField] private int timeDestroy;
     [SerializeField] private int score;
-    
+    private ScoreManager scoreManager;
     private Ship ship;
     private LifeBase characterLife;
+    private SpawnControl2D spawnControl;
+    private ScrollingBackground scrollingBackground;
+    private ShipEnemy shipEnemy;
+    private Projectile projectile;
+    private ProjetileManager projetileManager;
+   
     #region Propriedades get Set
     public int Damage
     {
@@ -48,6 +54,7 @@ public class Projectile : ProjetileBase
         
         
     }
+   
     private void CheckDestroyGameObject()
     {
         Destroy(gameObject, timeDestroy);
@@ -56,6 +63,15 @@ public class Projectile : ProjetileBase
     private void findObjs()
     {
         ship = FindObjectOfType(typeof(Ship)) as Ship;
+        scoreManager = FindObjectOfType( typeof(ScoreManager)) as ScoreManager;
+        spawnControl = FindObjectOfType(typeof(SpawnControl2D)) as SpawnControl2D;
+        scrollingBackground = FindObjectOfType(typeof(ScrollingBackground)) as ScrollingBackground;
+        shipEnemy = FindObjectOfType(typeof(ShipEnemy)) as ShipEnemy;
+        projectile = FindObjectOfType(typeof(Projectile)) as Projectile;
+        projetileManager = FindObjectOfType(typeof(ProjetileManager)) as ProjetileManager;
+        
+
+        
     }
     // Update is called once per frame
     public  void Update()
@@ -75,12 +91,14 @@ public class Projectile : ProjetileBase
             {
                 characterLife.Damage(Damage);
                 int lifezero = 0;
-                // Verifica se a vida do player  = zero
+                // Verifica se a vida do obj = zero
                 if (characterLife.Hp == lifezero)
                 {
 
-                    SoundEffectControl.Instance.MakeExplosionSound();
 
+                   
+                    SoundEffectControl.Instance.MakeExplosionSound();
+  
                 }
                 Destroy(gameObject);//destroyProjetil
 
@@ -88,8 +106,21 @@ public class Projectile : ProjetileBase
                 if (characterLife.Hp == lifezero)
                 {
                     ship.AddNumKillEnemy();
-                    
+
+                    //shipEnemy.OnDestroy();
                     ScoreManager.AddScore(score);
+                }
+                //Somente a nave do player sera destruida e dara  game Over
+                if (ship.Hp == lifezero)
+                {
+                    spawnControl.directionSpawn = StateDirectionSpawn.Disable;
+                    scrollingBackground.Speed = 0;
+                    ship.Texts[3].gameObject.SetActive(true);
+                    ship.Buttons_[0].gameObject.SetActive(true);
+                    ship.Texts[0].gameObject.SetActive(false);
+                    ship.Texts[2].gameObject.SetActive(false);
+                    scoreManager.DesableTextScore();
+
                 }
 
 
@@ -98,9 +129,10 @@ public class Projectile : ProjetileBase
         }
         
     }
-
+    
     protected override void OnAppyDamage()
     {
         
     }
+   
 }

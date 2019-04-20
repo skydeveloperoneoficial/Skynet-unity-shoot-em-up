@@ -14,6 +14,8 @@ public class ProjetileManager : MonoBehaviour
     [SerializeField] private bool shoot = true;
     private AudioSource audioSource;
 
+    public bool Shoot { get => shoot; set => shoot = value; }
+
     protected void Start()
     {
         shootProjetile();

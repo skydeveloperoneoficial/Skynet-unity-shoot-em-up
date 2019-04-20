@@ -26,13 +26,33 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: playerShotSound
-    value: 
-    objectReference: {fileID: 8300000, guid: b6c1d715a3ba73a4aa824456984e7b74, type: 3}
+    propertyPath: life
+    value: 1
+    objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: explosionSound
+    propertyPath: barlife
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: sprite_
     value: 
-    objectReference: {fileID: 8300000, guid: 59aae3e9277403d4aa2694897a26b7a5, type: 3}
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: damageColor.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: damageColor.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: damageColor.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: damageColor.a
+    value: 0
+    objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: tagobj
     value: ShipEnemy
@@ -50,18 +70,38 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: hptxt
-    value: 'LifeShip : '
+    propertyPath: txts.Array.size
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: killTxt
-    value: 'ShipEnemyKill :'
+    propertyPath: texts.Array.size
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: hp
-    value: 
+    propertyPath: buttons_.Array.size
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: kill
-    value: 
+    propertyPath: killEnemy
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: amountProjetileMax
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: currentAmountProjetile
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stopProjetile
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: damagerPlayer
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: damagerEnemy
+    value: 0
     objectReference: {fileID: 0}

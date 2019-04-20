@@ -20,20 +20,26 @@ public class Ship : LifeBase
 
     [SerializeField] private string[] txts;
     [SerializeField]private Text[] texts;
+    [SerializeField] private Button[] buttons_;
     [SerializeField]private int killEnemy;
     [SerializeField]private int amountProjetileMax;
     [SerializeField]private int currentAmountProjetile;
     [SerializeField]private bool stopProjetile= true;
-   
-   
 
-    
     [SerializeField] private int damagerPlayer, damagerEnemy;
+    private void Start()
+    {
+        texts[3].gameObject.SetActive(false);
+        buttons_[0].gameObject.SetActive(false);
+    }
 
-    
-   
-  
-   
+
+    #region Propriedades
+
+    public Text[] Texts { get => texts; set => texts = value; }
+    public Button[] Buttons_ { get => buttons_; set => buttons_ = value; }
+    #endregion
+
 
     private void MakeSound(AudioClip originalClip)
     {
@@ -45,11 +51,14 @@ public class Ship : LifeBase
         texts[0].text = txts[0] + Hp;
         //quantidade maxima de Tiro;
         texts[2].text = txts[1] + currentAmountProjetile;
+        
         // quantidade Tiro min
         //texts[2].text = txts[2] + amountProjetileMax;
 
         //Inimgos Mortos
         //texts[3].text = txts[3] + killEnemy;
+        texts[3].text = "GameOver";
+        
     }
     //Add projetile UI
     public void addProjetileUI()
@@ -98,28 +107,30 @@ public class Ship : LifeBase
             SoundEffectControl.Instance.MakePlayerShotSound();
         }
     }
-   
+
 
     // Colisoes  ship com o ShipEnemy
 
-   private void OnCollisionEnter2D(Collision2D collision)
+    #region Colision
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
         if (collision.gameObject.tag == tagobj)
         {
             var damagePlayer = false;
 
-             enemy = collision.gameObject.GetComponent<ShipEnemy>();
+            enemy = collision.gameObject.GetComponent<ShipEnemy>();
 
             if (enemy != null)
             {
                 enemyHealth = enemy.GetComponent<LifeBase>();
-                
+
                 if (enemyHealth != null)
                 {
                     enemyHealth.Damage(damagerEnemy);
                     ScoreManager.TotalScore--;
                     SoundEffectControl.Instance.MakeExplosionSound();
+
 
                 }
                 if (enemyHealth.Hp == 0)
@@ -138,19 +149,21 @@ public class Ship : LifeBase
                 if (playerHealth != null)
                 {
 
-                    
+
                     playerHealth.Damage(damagerPlayer);
 
 
-                    
+
 
 
                 }
             }
 
         }
-        
+
     }
+    #endregion
+
     private void Reload()
     {
         // carega o  o tiro no limite maximo

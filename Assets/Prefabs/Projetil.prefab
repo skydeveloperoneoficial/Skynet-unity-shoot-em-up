@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 163215372}
   - component: {fileID: 3867072364872019310}
   - component: {fileID: 5984601546919838972}
-  - component: {fileID: 418934046134824392}
   - component: {fileID: 3446644220488823187}
   - component: {fileID: 978942485571004092}
+  - component: {fileID: 6723058365282907731}
   m_Layer: 0
   m_Name: Projetil
   m_TagString: Untagged
@@ -50,7 +50,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0034534633}
+  m_Offset: {x: -0.000000011175871, y: 0.0003682226}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -61,7 +61,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28169823, y: 0.10902935}
+  m_Size: {x: 0.13360742, y: 0.049381703}
   m_EdgeRadius: 0
 --- !u!50 &5984601546919838972
 Rigidbody2D:
@@ -84,29 +84,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &418934046134824392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163215371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fec70c8dc30f95f41b87ca25459bb693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 0
-  barlife: 0
-  sprite_: {fileID: 0}
-  damageColor: {r: 0, g: 0, b: 0, a: 0}
-  taghit: 
-  projetileAnimatorHit: {fileID: 0}
-  Animation_: 0
-  damage: 1
-  objectTag: ShipEnemy
-  timeDestroy: 3
-  score: 2
 --- !u!82 &3446644220488823187
 AudioSource:
   m_ObjectHideFlags: 0
@@ -220,6 +197,29 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   disableMove: 1
   disableRotation: 0
+--- !u!114 &6723058365282907731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163215371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec70c8dc30f95f41b87ca25459bb693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 1
+  barlife: 0
+  sprite_: {fileID: 0}
+  damageColor: {r: 0, g: 0, b: 0, a: 0}
+  taghit: 
+  projetileAnimatorHit: {fileID: 0}
+  Animation_: 0
+  damage: 1
+  objectTag: ShipEnemy
+  timeDestroy: 7
+  score: 1
 --- !u!1 &427718609
 GameObject:
   m_ObjectHideFlags: 0

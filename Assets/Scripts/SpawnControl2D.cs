@@ -22,7 +22,7 @@ public class SpawnControl2D : MonoBehaviour {
 
     private bool isPositionPlayer = false;
 
-   [SerializeField]private bool isSpawner;
+   
 
     public StateDirectionSpawn directionSpawn = StateDirectionSpawn.Disable;
     private Transform playerTransform= null;
@@ -137,17 +137,15 @@ public class SpawnControl2D : MonoBehaviour {
     protected  void Start()
     {
         ActiveSpawner();
+        
        
     }
     private void ActiveSpawner()
     {
-        isSpawner = true;
 
 
-        if (isSpawner)
-        {
-            InvokeRepeating(TagSpawn, timespawn, rateSpawn);
-        }
+        InvokeRepeating(TagSpawn, timespawn, rateSpawn);
+        
     }
     /// <summary>
     /// Selecione O Tipo que deseja Trabalhar.
@@ -208,10 +206,10 @@ public class SpawnControl2D : MonoBehaviour {
                 }
                 break;
             case StateDirectionSpawn.Disable:
-                //Erro em vermelho.
+                
                 try
                 {
-                    Debug.LogError("DisableSpawn");
+                    
                 }
                 // Alerta.
                 catch

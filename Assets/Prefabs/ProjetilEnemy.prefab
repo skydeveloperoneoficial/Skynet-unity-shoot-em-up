@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 12523940}
   - component: {fileID: 2966521043628913787}
   - component: {fileID: 286808406585056043}
-  - component: {fileID: 5308824069445748245}
   - component: {fileID: 5157206295879229071}
   - component: {fileID: 7063505554010142083}
+  - component: {fileID: 8028378344512001873}
   m_Layer: 0
   m_Name: ProjetilEnemy
   m_TagString: Untagged
@@ -83,25 +83,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.0241475, y: 4.0076323}
   m_EdgeRadius: 0
---- !u!114 &5308824069445748245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12523939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fec70c8dc30f95f41b87ca25459bb693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 0
-  barlife: 0
-  damage: 1
-  objectTag: Ship
-  timeDestroy: 8
-  score: 0
-  explosionSound: {fileID: 8300000, guid: 59aae3e9277403d4aa2694897a26b7a5, type: 3}
 --- !u!114 &5157206295879229071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +115,29 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &8028378344512001873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12523939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec70c8dc30f95f41b87ca25459bb693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 1
+  barlife: 0
+  sprite_: {fileID: 0}
+  damageColor: {r: 0, g: 0, b: 0, a: 0}
+  taghit: 
+  projetileAnimatorHit: {fileID: 0}
+  Animation_: 0
+  damage: 1
+  objectTag: Ship
+  timeDestroy: 8
+  score: 0
 --- !u!1 &852622678
 GameObject:
   m_ObjectHideFlags: 0

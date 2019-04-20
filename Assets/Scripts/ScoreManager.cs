@@ -8,7 +8,8 @@ public class ScoreManager : MonoBehaviour
     public static int multiplication;
     public static string scoreText= "Score: ";
 
-    public Text text;
+
+    public  Text text;
 
     public  void Awake()
     {
@@ -37,6 +38,10 @@ public class ScoreManager : MonoBehaviour
     {
         return TotalScore += setvalue;
         
+    }
+    public  void DesableTextScore()
+    {
+        text.gameObject.SetActive(false);
     }
 
     
