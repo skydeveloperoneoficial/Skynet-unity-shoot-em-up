@@ -13,12 +13,13 @@ public enum StateDirectionSpawn
 
 public class SpawnControl2D : MonoBehaviour {
 
-    [SerializeField] private Transform[] spawnPos;
-    [SerializeField] private float rateSpawn = 2f,timespawn;
-    [SerializeField] private float vRandomMin = 1.0f, vRandomMax = 1.0f, hRandomMin, hRandomMax;//Random Vertical and Horizontal
-    [SerializeField] private string tagSpawn = "Spawn", tagPlayer = "ShipEnemy", tagenemy = "Enemy";
-   
-    
+    [SerializeField] private Transform spawnPos;
+    [SerializeField] private float rateSpawn ,timespawn;
+    [SerializeField] private float vRandomMin, vRandomMax, hRandomMin, hRandomMax;//Random Vertical and Horizontal
+    [SerializeField] private string tagSpawn = "Spawn", tagPlayer = "ShipEnemy", tagenemy = "Enemy";// Def..
+    private Transform enemyTransform;
+    private Vector3 spawnPositionA, spawnPositionB;
+
 
     private bool isPositionPlayer = false;
 
@@ -122,14 +123,16 @@ public class SpawnControl2D : MonoBehaviour {
     {
         get
         {
-            return spawnPos[0];
+            return spawnPos;
         }
 
         set
         {
-            spawnPos[0] = value;
+            spawnPos = value;
         }
     }
+
+    public float RateSpawn { get => rateSpawn; set => rateSpawn = value; }
     #endregion
 
 
@@ -143,7 +146,6 @@ public class SpawnControl2D : MonoBehaviour {
     private void ActiveSpawner()
     {
 
-
         InvokeRepeating(TagSpawn, timespawn, rateSpawn);
         
     }
@@ -155,63 +157,74 @@ public class SpawnControl2D : MonoBehaviour {
 
         switch (directionSpawn)
         {
+            // Spawn Vertical 
+            #region Spawn  Vertical
             case StateDirectionSpawn.SpawnVetical:
                 {
                     
                     isPositionPlayer = !isPositionPlayer;
 
-                    Vector3 spawnPosition;
+                     
 
                     if (isPositionPlayer && playerTransform != null)
                     {
-                        spawnPosition = new Vector3(playerTransform.position.x,
+                        spawnPositionA = new Vector3(playerTransform.position.x,
                                                     transform.position.y,
                                                     transform.position.z); //SpawnPoint
                     }
                     else
                     {
-                        spawnPosition = new Vector3(Random.Range(VRandomMin, VRandomMax),
+                        spawnPositionA = new Vector3(Random.Range(VRandomMin, VRandomMax),
                                                     transform.position.y,
                                                     transform.position.z);//Spawn Random
                     }
                     
-                    var enemyTransform = Instantiate(spawnPos[0]) as Transform;
+                    enemyTransform = Instantiate(spawnPos) as Transform;
                    
-                    enemyTransform.position = spawnPosition;
+                    enemyTransform.position = spawnPositionA;
+
                 }
                 break;
+            #endregion
+
+            // Spawn Horizontal
+            #region Spawn Horizontal
             case StateDirectionSpawn.SpawnHorizontal:
                 {
                     
                     isPositionPlayer = !isPositionPlayer;
 
-                    Vector3 spawnPosition;
+                     
 
                     if (isPositionPlayer && playerTransform != null)
                     {
-                        spawnPosition = new Vector3(playerTransform.position.x,
+                        spawnPositionA = new Vector3(playerTransform.position.x,
                                                     playerTransform.position.y,
                                                     transform.position.z);//SpawnPoint
                     }
                     else
                     {
-                        spawnPosition = new Vector3(transform.position.x,
+                        spawnPositionA = new Vector3(transform.position.x,
                                                     Random.Range(HRandomMin, HRandomMax),
                                                     transform.position.z);//Spawn Random
                     }
-                    
-                    var enemyTransform = Instantiate(spawnPos[0]) as Transform;
+                   
 
-                    enemyTransform.position = spawnPosition;
+                        enemyTransform = Instantiate(spawnPos) as Transform;
+                    
+
+                    enemyTransform.position = spawnPositionA;
+                    
                 }
                 break;
+            #endregion
             case StateDirectionSpawn.Disable:
                 
                 try
                 {
                     
                 }
-                // Alerta.
+                // Desable spawn
                 catch
                 {
                     Debug.LogWarning("DisableSpawn");

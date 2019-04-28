@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Scenes : SceneController
 {
-    protected void Start()
+
+    void Start()
     {
         
     }

@@ -105,3 +105,7 @@ Preset:
     propertyPath: damagerEnemy
     value: 0
     objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colldownWaves.Array.size
+    value: 0
+    objectReference: {fileID: 0}

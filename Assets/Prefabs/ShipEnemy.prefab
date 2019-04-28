@@ -156,6 +156,7 @@ MonoBehaviour:
   barlife: 0
   sprite_: {fileID: 2265985893365383325}
   damageColor: {r: 0, g: 0, b: 0, a: 0}
+  rateSpawnEnemy: 1.56
   timeDestroy: 8
 --- !u!58 &2873870423549851812
 CircleCollider2D:
@@ -208,7 +209,7 @@ MonoBehaviour:
   projetiles:
   - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
   - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
-  rateprojetile: 2.2
+  rateprojetile_: 0
   shoot: 1
 --- !u!82 &5345880825378123765
 AudioSource:

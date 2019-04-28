@@ -7,8 +7,8 @@ using UnityEngine;
 public class ShipEnemy : LifeBase
 {
     private BasicMoviment2D enemyMove;
-    
-    [SerializeField]private int timeDestroy;
+ 
+    [SerializeField]private int timeDestroy;// So mente nese  campo
 
     private Ship ship;
 
@@ -38,10 +38,12 @@ public class ShipEnemy : LifeBase
         FindObject();
 
     }
-
+  
+   
     private void FindObject()
     {
         enemyMove = FindObjectOfType(typeof(BasicMoviment2D)) as BasicMoviment2D;
+      
 
         ship = FindObjectOfType(typeof(Ship)) as Ship;
         
@@ -53,7 +55,7 @@ public class ShipEnemy : LifeBase
     {
         Destroy(gameObject, TimeDestroy);
     }
- 
+   
 
 
 

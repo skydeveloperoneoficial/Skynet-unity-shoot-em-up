@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,9 +13,18 @@ public class Ship : LifeBase
     [SerializeField] private string tagobj;
     [SerializeField] private GameObject projetile;
     [SerializeField] private Transform SpawnProjetile;
+    [SerializeField] private GameObject[] gameObjects;
     [SerializeField] private float Rateprojetile;
+    
     private LifeBase enemyHealth, playerHealth;
-    private ShipEnemy enemy;
+    private ShipEnemy enemy,shipEnemytwo;
+    
+    private SpawnControl2D spawnControl2D;
+    private ProjetileManager projetileManager;
+    private ScrollingBackground scrollingBackground;
+    
+    private ScoreManager scoreManager;
+    
     private float nextProjetile;
 
 
@@ -25,12 +35,37 @@ public class Ship : LifeBase
     [SerializeField]private int amountProjetileMax;
     [SerializeField]private int currentAmountProjetile;
     [SerializeField]private bool stopProjetile= true;
+    [SerializeField] private float rateProjeteleEnemy;
+    
+
+   
 
     [SerializeField] private int damagerPlayer, damagerEnemy;
+
+    [SerializeField]
+    private float[] colldownWaves;
+    
+
     private void Start()
     {
-        texts[3].gameObject.SetActive(false);
-        buttons_[0].gameObject.SetActive(false);
+        
+        texts[3].gameObject.SetActive(false);// Desabilitar Game Over  Text
+        buttons_[0].gameObject.SetActive(false);// Desabilitar Game Over  Bottom
+        //Desbiltar  Gerenciador de Tiro
+        
+        //Desatvar Boss
+        gameObjects[0].gameObject.SetActive(false);
+        //Desabiltar inimigo
+        
+        //FinnDObj
+        spawnControl2D = FindObjectOfType(typeof(SpawnControl2D)) as SpawnControl2D;
+        enemy = FindObjectOfType(typeof(ShipEnemy)) as ShipEnemy;
+       
+        shipEnemytwo = FindObjectOfType(typeof(ShipEnemy)) as ShipEnemy;
+        projetileManager = FindObjectOfType(typeof(ProjetileManager)) as ProjetileManager;
+        scrollingBackground = FindObjectOfType(typeof(ScrollingBackground)) as ScrollingBackground;
+        
+        scoreManager = FindObjectOfType(typeof(ScoreManager)) as ScoreManager;
     }
 
 
@@ -52,11 +87,7 @@ public class Ship : LifeBase
         //quantidade maxima de Tiro;
         texts[2].text = txts[1] + currentAmountProjetile;
         
-        // quantidade Tiro min
-        //texts[2].text = txts[2] + amountProjetileMax;
-
-        //Inimgos Mortos
-        //texts[3].text = txts[3] + killEnemy;
+       
         texts[3].text = "GameOver";
         
     }
@@ -67,14 +98,7 @@ public class Ship : LifeBase
         checkMaxProjetile();
     }
 
-    //public void RemoveProjetileUI()
-    //{
-    //    if (currentAmountProjetile >= amountProjetileMax)
-    //    {
-    //        amountProjetileMax--;
-    //    }
-            
-    //}
+    
     /// <summary>
     /// checa  o Maximo de  projetil
     /// </summary>
@@ -128,19 +152,23 @@ public class Ship : LifeBase
                 if (enemyHealth != null)
                 {
                     enemyHealth.Damage(damagerEnemy);
-                    ScoreManager.TotalScore--;
+                    //ScoreManager.TotalScore--;
+                
+
                     SoundEffectControl.Instance.MakeExplosionSound();
 
-
+               
                 }
-                if (enemyHealth.Hp == 0)
+                int zero=0;
+                if (enemyHealth.Hp == zero)// se a viada do inimigo  For zero
                 {
+                    // adciona  quantide Morte para inimigos
                     AddNumKillEnemy();
                 }
-
+        
                 damagePlayer = true;
             }
-
+            // DANO DO PLAYER
             if (damagePlayer)
             {
 
@@ -149,9 +177,25 @@ public class Ship : LifeBase
                 if (playerHealth != null)
                 {
 
-
                     playerHealth.Damage(damagerPlayer);
+                    int zero = 0;
+                    if (this.Hp == zero)
+                    {
+                        
 
+                        //Ativa  o Game Over 
+                        texts[3].gameObject.SetActive(true);
+                        buttons_[0].gameObject.SetActive(true);
+
+                        //desativa  os  testos e o score o scrollingBackground e para de spawnar
+                        texts[0].gameObject.SetActive(false);
+                        texts[2].gameObject.SetActive(false);
+                        scoreManager.DesableTextScore();
+                        scrollingBackground.Speed = 0;
+                        spawnControl2D.directionSpawn = StateDirectionSpawn.Disable;
+                        StopCoroutine(WaveCont());
+                    }
+                      
 
 
 
@@ -193,6 +237,12 @@ public class Ship : LifeBase
 
         }
     }
+    private void StartCorotine_()
+    {
+      
+        StartCoroutine(WaveCont());
+        
+    }
     private void Update()
     {
         
@@ -201,8 +251,61 @@ public class Ship : LifeBase
         
         HUDSTxt();
         ShotProjetile();
+
+        StartCorotine_();
         
         
     }
- 
+    public IEnumerator WaveCont()
+    {
+        projetileManager.Shoot = false;
+        // Primera Weve
+        Debug.Log("Wave1");
+        
+        yield return new WaitForSeconds(colldownWaves[0]);
+        
+
+        Debug.Log("Wave2");
+
+        //Debug.Log("(Wave 2)" + colldownWaves[0]);
+       
+        yield return new WaitForSeconds(colldownWaves[1]);
+        Debug.Log("Wave3");
+        
+        yield return new WaitForSeconds(colldownWaves[2]);
+        Debug.Log("Wave4");
+
+        projetileManager.Shoot = true;
+
+        //Ativar Inimigos
+        gameObjects[1].SetActive(true);
+
+        gameObjects[2].SetActive(true);
+        gameObjects[3].SetActive(true);
+        yield return new WaitForSeconds(colldownWaves[3]);
+        Debug.Log("Wave5");
+        yield return new WaitForSeconds(colldownWaves[4]);
+        Debug.Log("Wave6");
+
+        yield return new WaitForSeconds(colldownWaves[5]);
+        spawnControl2D.directionSpawn = StateDirectionSpawn.Disable;// Para de spawnar
+        Debug.Log("WaveFinal");
+        yield return new WaitForSeconds(colldownWaves[6]);
+        // Aparece o Boss
+
+        gameObjects[0].SetActive(true);
+        
+        
+
+        yield return new WaitForSeconds(colldownWaves[7]);
+        
+        Debug.Log("Parar Boss e para BG");
+        //Parar  Boss  zerando a velocide
+        
+        scrollingBackground.Speed = 0; // Para o BG
+        
+
+    }
+
+
 }

@@ -12,7 +12,8 @@ public class Boss :MonoBehaviour
     
     protected  void Start()
     {
-
+        //desabilitar boss
+        
         
     }
 

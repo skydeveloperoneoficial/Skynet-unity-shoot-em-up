@@ -15,9 +15,7 @@ public class Projectile : ProjetileBase
     private LifeBase characterLife;
     private SpawnControl2D spawnControl;
     private ScrollingBackground scrollingBackground;
-    private ShipEnemy shipEnemy;
-    private Projectile projectile;
-    private ProjetileManager projetileManager;
+    
    
     #region Propriedades get Set
     public int Damage
@@ -66,9 +64,7 @@ public class Projectile : ProjetileBase
         scoreManager = FindObjectOfType( typeof(ScoreManager)) as ScoreManager;
         spawnControl = FindObjectOfType(typeof(SpawnControl2D)) as SpawnControl2D;
         scrollingBackground = FindObjectOfType(typeof(ScrollingBackground)) as ScrollingBackground;
-        shipEnemy = FindObjectOfType(typeof(ShipEnemy)) as ShipEnemy;
-        projectile = FindObjectOfType(typeof(Projectile)) as Projectile;
-        projetileManager = FindObjectOfType(typeof(ProjetileManager)) as ProjetileManager;
+        
         
 
         
@@ -120,7 +116,7 @@ public class Projectile : ProjetileBase
                     ship.Texts[0].gameObject.SetActive(false);
                     ship.Texts[2].gameObject.SetActive(false);
                     scoreManager.DesableTextScore();
-
+                    StopCoroutine(ship.WaveCont());
                 }
 
 

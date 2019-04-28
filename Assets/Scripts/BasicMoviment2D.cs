@@ -28,14 +28,15 @@ namespace Assets.Scripts
                 rotatiomObj += movement.x;
                 rotatiomObj += movement.y;
             }
-            
+
             if (disableMove)
-            //2D
-            
-            movement = new Vector2(
-                 speed.x * direction.x,
-                 speed.y * direction.y);
-            
+            {
+                //2D
+
+                movement = new Vector2(
+                     speed.x * direction.x,
+                     speed.y * direction.y);
+            }
 
         }
 

@@ -9,12 +9,13 @@ public class ProjetileManager : MonoBehaviour
     [SerializeField]
     private Transform[] spawnsProjetiles;
     [SerializeField] private GameObject[] projetiles;
-    [SerializeField] private float rateprojetile;
+    [SerializeField] private float rateprojetile_;
     
     [SerializeField] private bool shoot = true;
     private AudioSource audioSource;
 
     public bool Shoot { get => shoot; set => shoot = value; }
+    public float Rateprojetile_ { get => rateprojetile_; set => rateprojetile_ = value; }
 
     protected void Start()
     {
@@ -31,7 +32,7 @@ public class ProjetileManager : MonoBehaviour
     {
         if (shoot)
         {
-            InvokeRepeating("Fire", rateprojetile, rateprojetile);
+            InvokeRepeating("Fire", Rateprojetile_, Rateprojetile_);
         }
     }
     private void Fire()
