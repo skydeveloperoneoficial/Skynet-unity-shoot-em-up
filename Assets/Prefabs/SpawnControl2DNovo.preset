@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpawnControl2D
+  m_Name: SpawnControl2DNovo
   m_TargetType:
     m_NativeTypeID: 114
     m_ManagedTypePPtr: {fileID: 11500000, guid: d7b7a0c94f12ee64ba44e24781ca784d,
@@ -28,7 +28,8 @@ Preset:
   - target: {fileID: 0}
     propertyPath: spawnPos
     value: 
-    objectReference: {fileID: 0}
+    objectReference: {fileID: 2265985893820961352, guid: 2e6e1d72f692c0d4da839341343c6598,
+      type: 3}
   - target: {fileID: 0}
     propertyPath: rateSpawn
     value: 0
@@ -47,11 +48,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: hRandomMin
-    value: 2.22
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: hRandomMax
-    value: -5.2
+    value: -2.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: tagSpawn

@@ -254,7 +254,7 @@ MonoBehaviour:
   - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
   - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
   - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
-  rateprojetile: 2.2
+  rateprojetile_: 0
   shoot: 1
 --- !u!82 &3176279518713170231
 AudioSource:

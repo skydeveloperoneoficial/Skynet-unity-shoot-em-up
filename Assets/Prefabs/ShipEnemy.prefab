@@ -156,7 +156,6 @@ MonoBehaviour:
   barlife: 0
   sprite_: {fileID: 2265985893365383325}
   damageColor: {r: 0, g: 0, b: 0, a: 0}
-  rateSpawnEnemy: 1.56
   timeDestroy: 8
 --- !u!58 &2873870423549851812
 CircleCollider2D:
@@ -186,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c02a9b2dbee9428b02833daf088ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 4, y: 1}
+  speed: {x: 3.09, y: 0}
   direction: {x: -1, y: 0}
   movement: {x: 0, y: 0}
   disableMove: 1

@@ -15,6 +15,7 @@ public class Projectile : ProjetileBase
     private LifeBase characterLife;
     private SpawnControl2D spawnControl;
     private ScrollingBackground scrollingBackground;
+    private GameObject[] gameObjects;
     
    
     #region Propriedades get Set

@@ -15,6 +15,8 @@ public class Ship : LifeBase
     [SerializeField] private Transform SpawnProjetile;
     [SerializeField] private GameObject[] gameObjects;
     [SerializeField] private float Rateprojetile;
+    [SerializeField] private float rateSpawnEnemy;
+    [SerializeField] private float timeSpawnEnemy;
     
     private LifeBase enemyHealth, playerHealth;
     private ShipEnemy enemy,shipEnemytwo;
@@ -22,6 +24,7 @@ public class Ship : LifeBase
     private SpawnControl2D spawnControl2D;
     private ProjetileManager projetileManager;
     private ScrollingBackground scrollingBackground;
+    
     
     private ScoreManager scoreManager;
     
@@ -36,6 +39,7 @@ public class Ship : LifeBase
     [SerializeField]private int currentAmountProjetile;
     [SerializeField]private bool stopProjetile= true;
     [SerializeField] private float rateProjeteleEnemy;
+
     
 
    
@@ -66,6 +70,7 @@ public class Ship : LifeBase
         scrollingBackground = FindObjectOfType(typeof(ScrollingBackground)) as ScrollingBackground;
         
         scoreManager = FindObjectOfType(typeof(ScoreManager)) as ScoreManager;
+        
     }
 
 
@@ -138,7 +143,7 @@ public class Ship : LifeBase
     #region Colision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        
         if (collision.gameObject.tag == tagobj)
         {
             var damagePlayer = false;
@@ -263,33 +268,42 @@ public class Ship : LifeBase
         Debug.Log("Wave1");
         
         yield return new WaitForSeconds(colldownWaves[0]);
+       
         
-
+        // Segunda Wave
         Debug.Log("Wave2");
 
         //Debug.Log("(Wave 2)" + colldownWaves[0]);
-       
+  
+        Debug.Log("Disabiltar Spawn");
+
         yield return new WaitForSeconds(colldownWaves[1]);
+        // terceira Wave
         Debug.Log("Wave3");
-        
+        Debug.Log("abiltar Spawn");
+       
+
         yield return new WaitForSeconds(colldownWaves[2]);
+        // Quarta Wave
         Debug.Log("Wave4");
 
         projetileManager.Shoot = true;
 
-        //Ativar Inimigos
-        gameObjects[1].SetActive(true);
+       
 
-        gameObjects[2].SetActive(true);
-        gameObjects[3].SetActive(true);
         yield return new WaitForSeconds(colldownWaves[3]);
+        // Quinta Wave
         Debug.Log("Wave5");
         yield return new WaitForSeconds(colldownWaves[4]);
+        // Sexta Wave
         Debug.Log("Wave6");
 
         yield return new WaitForSeconds(colldownWaves[5]);
+        // Final Wave
+        Debug.Log("Disabiltar Spawn");
         spawnControl2D.directionSpawn = StateDirectionSpawn.Disable;// Para de spawnar
         Debug.Log("WaveFinal");
+        // O boss aparece
         yield return new WaitForSeconds(colldownWaves[6]);
         // Aparece o Boss
 
@@ -300,10 +314,18 @@ public class Ship : LifeBase
         yield return new WaitForSeconds(colldownWaves[7]);
         
         Debug.Log("Parar Boss e para BG");
-        //Parar  Boss  zerando a velocide
         
+       
         scrollingBackground.Speed = 0; // Para o BG
-        
+        //desativar o Boss
+        BasicMoveBoss.enableBossX = true;
+        BasicMoveBoss.enableTeleport = false;
+///Fim
+
+        //Wave BattleBoss  Onda de balalha  do boss
+
+
+
 
     }
 
