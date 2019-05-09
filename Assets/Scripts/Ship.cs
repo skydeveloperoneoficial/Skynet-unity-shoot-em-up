@@ -13,7 +13,7 @@ public class Ship : LifeBase
     [SerializeField] private string tagobj;
     [SerializeField] private GameObject projetile;
     [SerializeField] private Transform SpawnProjetile;
-    [SerializeField] private GameObject[] gameObjects;
+    [SerializeField] private GameObject[] gameObjects_;
     [SerializeField] private float Rateprojetile;
     [SerializeField] private float rateSpawnEnemy;
     [SerializeField] private float timeSpawnEnemy;
@@ -35,8 +35,8 @@ public class Ship : LifeBase
     [SerializeField]private Text[] texts;
     [SerializeField] private Button[] buttons_;
     [SerializeField]private int killEnemy;
-    [SerializeField]private int amountProjetileMax;
-    [SerializeField]private int currentAmountProjetile;
+    [SerializeField]private int amountProjetileMax_;
+    [SerializeField]private int currentAmountProjetile_;
     [SerializeField]private bool stopProjetile= true;
     [SerializeField] private float rateProjeteleEnemy;
 
@@ -58,7 +58,7 @@ public class Ship : LifeBase
         //Desbiltar  Gerenciador de Tiro
         
         //Desatvar Boss
-        gameObjects[0].gameObject.SetActive(false);
+        gameObjects_[0].gameObject.SetActive(false);
         //Desabiltar inimigo
         
         //FinnDObj
@@ -78,6 +78,10 @@ public class Ship : LifeBase
 
     public Text[] Texts { get => texts; set => texts = value; }
     public Button[] Buttons_ { get => buttons_; set => buttons_ = value; }
+    public GameObject[] GameObjects_ { get => gameObjects_; set => gameObjects_ = value; }
+    public int AmountProjetileMax_ { get => amountProjetileMax_; set => amountProjetileMax_ = value; }
+    public bool StopProjetile { get => stopProjetile; set => stopProjetile = value; }
+    public int CurrentAmountProjetile_ { get => currentAmountProjetile_; set => currentAmountProjetile_ = value; }
     #endregion
 
 
@@ -90,7 +94,7 @@ public class Ship : LifeBase
         //Hp Do player
         texts[0].text = txts[0] + Hp;
         //quantidade maxima de Tiro;
-        texts[2].text = txts[1] + currentAmountProjetile;
+        texts[2].text = txts[1] + currentAmountProjetile_;
         
        
         texts[3].text = "GameOver";
@@ -99,7 +103,7 @@ public class Ship : LifeBase
     //Add projetile UI
     public void addProjetileUI()
     {
-        currentAmountProjetile++;
+        currentAmountProjetile_++;
         checkMaxProjetile();
     }
 
@@ -109,7 +113,7 @@ public class Ship : LifeBase
     /// </summary>
     public void checkMaxProjetile()
     {
-        if (currentAmountProjetile == amountProjetileMax)
+        if (currentAmountProjetile_ == amountProjetileMax_)
         {
             stopProjetile = false;
             
@@ -159,8 +163,9 @@ public class Ship : LifeBase
                     enemyHealth.Damage(damagerEnemy);
                     //ScoreManager.TotalScore--;
                 
-
+                    
                     SoundEffectControl.Instance.MakeExplosionSound();
+                    
 
                
                 }
@@ -207,6 +212,7 @@ public class Ship : LifeBase
 
                 }
             }
+            
 
         }
 
@@ -220,7 +226,7 @@ public class Ship : LifeBase
         if (Input.GetKeyDown(KeyCode.R)|| CrossPlatformInputManager.GetButton("Fire2"))
         {
             int zero = 0;
-            currentAmountProjetile = zero;
+            currentAmountProjetile_ = zero;
             stopProjetile = true;
             
 
@@ -228,9 +234,9 @@ public class Ship : LifeBase
     }
     private void CheckShotLimitMax()
     {
-        if (currentAmountProjetile == amountProjetileMax)
+        if (currentAmountProjetile_ == amountProjetileMax_)
         {
-            Reload();
+            //Reload();
         }
     }
     private void ShotProjetile()
@@ -307,7 +313,7 @@ public class Ship : LifeBase
         yield return new WaitForSeconds(colldownWaves[6]);
         // Aparece o Boss
 
-        gameObjects[0].SetActive(true);
+        gameObjects_[0].SetActive(true);
         
         
 

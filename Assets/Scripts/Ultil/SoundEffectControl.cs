@@ -32,13 +32,14 @@ public class SoundEffectControl : MonoBehaviour {
     
     public void MakeColetableSound()
     {
-        MakeSound(SoundEffect[2]);
+        MakeSound(SoundEffect[3]);
         
     }
     
     private void MakeSound(AudioClip originalClip)
     {
         AudioSource.PlayClipAtPoint(originalClip, transform.position, VolSoundEffect);
+        
         
     }
 }

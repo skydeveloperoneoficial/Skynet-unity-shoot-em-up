@@ -243,8 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPos: {fileID: 2265985893820961352, guid: 2e6e1d72f692c0d4da839341343c6598,
     type: 3}
-  rateSpawn: 2
-  timespawn: 3
+  rateSpawn: 7
+  timespawn: 7
   vRandomMin: 0
   vRandomMax: 0
   hRandomMin: 3
@@ -1236,137 +1236,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 688556075916439383}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1170482779
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1170482780}
-  - component: {fileID: 1170482781}
-  - component: {fileID: 1170482783}
-  - component: {fileID: 1170482782}
-  - component: {fileID: 1170482784}
-  m_Layer: 0
-  m_Name: PowerUps
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1170482780
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170482779}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.666, y: 0.583, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1635545068}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1170482781
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170482779}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: bac25302b414d7c4bb224acd8845fe7b, type: 3}
-  m_Color: {r: 0.6886792, g: 0.3414541, b: 0.068218224, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.3333334, y: 1.3333334}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!50 &1170482782
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170482779}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
---- !u!58 &1170482783
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170482779}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.6666667
---- !u!114 &1170482784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170482779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d53e67b02288ad349bdfeea20ada6d00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1270937200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,37 +1389,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390022940}
   m_CullTransparentMesh: 0
---- !u!1 &1635545066
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1635545068}
-  m_Layer: 0
-  m_Name: PowerUpshot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1635545068
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635545066}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.05, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1170482780}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1641356858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,6 +2088,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 4.4481635
       objectReference: {fileID: 0}
+    - target: {fileID: 688556076536269540, guid: d6787019e6fa25d41b233edd95394079,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.0001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6787019e6fa25d41b233edd95394079, type: 3}
 --- !u!1001 &5569825961442204163
@@ -2332,7 +2175,12 @@ PrefabInstance:
     - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
       propertyPath: gameObjects.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
+        type: 3}
+      propertyPath: gameObjects_.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
@@ -2357,7 +2205,7 @@ PrefabInstance:
     - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
       propertyPath: damagerEnemy
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
@@ -2448,7 +2296,8 @@ PrefabInstance:
         type: 3}
       propertyPath: gameObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1735861557900878712, guid: ae53aca037159094caf58ef417cff4bb,
+        type: 3}
     - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
       propertyPath: gameObjects.Array.data[2]
@@ -2468,6 +2317,32 @@ PrefabInstance:
         type: 3}
       propertyPath: rateSpawnEnemy
       value: 5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
+        type: 3}
+      propertyPath: gameObjects_.Array.data[0]
+      value: 
+      objectReference: {fileID: 1133996790}
+    - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
+        type: 3}
+      propertyPath: gameObjects_.Array.data[1]
+      value: 
+      objectReference: {fileID: 1735861557900878712, guid: ae53aca037159094caf58ef417cff4bb,
+        type: 3}
+    - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
+        type: 3}
+      propertyPath: amountProjetileMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
+        type: 3}
+      propertyPath: amountProjetileMax_
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
+        type: 3}
+      propertyPath: currentAmountProjetile_
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5569825962928281151, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}

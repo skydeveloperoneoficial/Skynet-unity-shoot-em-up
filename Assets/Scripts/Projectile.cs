@@ -12,6 +12,7 @@ public class Projectile : ProjetileBase
     [SerializeField] private int score;
     private ScoreManager scoreManager;
     private Ship ship;
+    private ShipEnemy shipEnemy;
     private LifeBase characterLife;
     private SpawnControl2D spawnControl;
     private ScrollingBackground scrollingBackground;
@@ -30,6 +31,7 @@ public class Projectile : ProjetileBase
         {
             damage = value;
         }
+        
     }
     
     public string ObjectTag
@@ -65,7 +67,7 @@ public class Projectile : ProjetileBase
         scoreManager = FindObjectOfType( typeof(ScoreManager)) as ScoreManager;
         spawnControl = FindObjectOfType(typeof(SpawnControl2D)) as SpawnControl2D;
         scrollingBackground = FindObjectOfType(typeof(ScrollingBackground)) as ScrollingBackground;
-        
+        shipEnemy = FindObjectOfType(typeof(ShipEnemy))as ShipEnemy;
         
 
         
@@ -76,10 +78,16 @@ public class Projectile : ProjetileBase
         CheckDestroyGameObject();
         
     }
-   
+   public void SpawnItem()
+   {
+        Debug.Log("Instanciou"+ transform.position);
+        Instantiate(ship.GameObjects_[1],transform.position,transform.rotation);
+        ship.CurrentAmountProjetile_=0;
+        
+   }
     private  void OnTriggerEnter2D(Collider2D collider)
     {
-
+        
         if (collider.gameObject.tag == objectTag)
         {
              characterLife = collider.gameObject.GetComponent<LifeBase>();
@@ -93,10 +101,18 @@ public class Projectile : ProjetileBase
                 {
 
 
+                    SpawnItem();
+                    Debug.Log("Pegou");
+                    
+                   SoundEffectControl.Instance.MakeExplosionSound();
+
+                  
                    
-                    SoundEffectControl.Instance.MakeExplosionSound();
-  
+                  
+                   
+                    
                 }
+                
                 Destroy(gameObject);//destroyProjetil
 
 
@@ -118,7 +134,11 @@ public class Projectile : ProjetileBase
                     ship.Texts[2].gameObject.SetActive(false);
                     scoreManager.DesableTextScore();
                     StopCoroutine(ship.WaveCont());
+                    
+
                 }
+                
+                
 
 
             }
