@@ -6,6 +6,7 @@ public class UpdateShotBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
      [SerializeField]private int timeDestroy;// So mente nese  campo
+     //private Ship ship;
       #region propriedades get Set
 
     public int TimeDestroy
@@ -30,6 +31,12 @@ public class UpdateShotBehaviour : MonoBehaviour
     {
         OnTimeDestroy();
     }
+    public void Reload_()
+    {
+       Ship.currentAmountProjetile_=0;
+       Ship.stopProjetile = true;
+    }
+  
     
 
     // Update is called once per frame
@@ -40,7 +47,10 @@ public class UpdateShotBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag =="Ship"){
             SoundEffectControl.Instance.MakeColetableSound();
+            
             Destroy(gameObject);
+            Reload_();
+            
             
         }
         

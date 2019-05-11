@@ -36,9 +36,10 @@ public class Ship : LifeBase
     [SerializeField] private Button[] buttons_;
     [SerializeField]private int killEnemy;
     [SerializeField]private int amountProjetileMax_;
-    [SerializeField]private int currentAmountProjetile_;
-    [SerializeField]private bool stopProjetile= true;
+    public static int currentAmountProjetile_;
+    public static bool stopProjetile= true;
     [SerializeField] private float rateProjeteleEnemy;
+    
 
     
 
@@ -49,6 +50,9 @@ public class Ship : LifeBase
     [SerializeField]
     private float[] colldownWaves;
     
+    
+
+
 
     private void Start()
     {
@@ -80,8 +84,8 @@ public class Ship : LifeBase
     public Button[] Buttons_ { get => buttons_; set => buttons_ = value; }
     public GameObject[] GameObjects_ { get => gameObjects_; set => gameObjects_ = value; }
     public int AmountProjetileMax_ { get => amountProjetileMax_; set => amountProjetileMax_ = value; }
-    public bool StopProjetile { get => stopProjetile; set => stopProjetile = value; }
-    public int CurrentAmountProjetile_ { get => currentAmountProjetile_; set => currentAmountProjetile_ = value; }
+    
+    
     #endregion
 
 
@@ -236,7 +240,7 @@ public class Ship : LifeBase
     {
         if (currentAmountProjetile_ == amountProjetileMax_)
         {
-            //Reload();
+            //Reload(); //Reload  sem powerup
         }
     }
     private void ShotProjetile()

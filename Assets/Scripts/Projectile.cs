@@ -13,7 +13,7 @@ public class Projectile : ProjetileBase
     private ScoreManager scoreManager;
     private Ship ship;
     private ShipEnemy shipEnemy;
-    private LifeBase characterLife;
+    private LifeBase characterLife;// Todos os personagens
     private SpawnControl2D spawnControl;
     private ScrollingBackground scrollingBackground;
     private GameObject[] gameObjects;
@@ -78,13 +78,16 @@ public class Projectile : ProjetileBase
         CheckDestroyGameObject();
         
     }
-   public void SpawnItem()
+   public bool SpawnItem()
    {
         Debug.Log("Instanciou"+ transform.position);
         Instantiate(ship.GameObjects_[1],transform.position,transform.rotation);
-        ship.CurrentAmountProjetile_=0;
+        return true;
+        
         
    }
+  
+
     private  void OnTriggerEnter2D(Collider2D collider)
     {
         
@@ -102,14 +105,10 @@ public class Projectile : ProjetileBase
 
 
                     SpawnItem();
+                   
                     Debug.Log("Pegou");
                     
                    SoundEffectControl.Instance.MakeExplosionSound();
-
-                  
-                   
-                  
-                   
                     
                 }
                 
