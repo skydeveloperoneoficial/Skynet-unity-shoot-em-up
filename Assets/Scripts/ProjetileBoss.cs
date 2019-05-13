@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjetileBoss : MonoBehaviour
+public class ProjetileBoss : ProjetileBase
 {
+    
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -12,6 +15,16 @@ public class ProjetileBoss : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag=="ProjetileBoss")
+        {
+
+        }
+    }
+    protected override void OnAppyDamage()
     {
         
     }

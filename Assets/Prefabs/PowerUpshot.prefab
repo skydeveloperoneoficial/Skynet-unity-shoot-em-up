@@ -164,6 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeDestroy: 50
+  amountProjetileUp: 0.5
+  amountProjetileSet: 0.4
 --- !u!114 &1044903279254338137
 MonoBehaviour:
   m_ObjectHideFlags: 0

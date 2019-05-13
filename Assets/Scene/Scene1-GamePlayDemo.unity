@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &21710543
 RectTransform:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPos: {fileID: 2265985893820961352, guid: 2e6e1d72f692c0d4da839341343c6598,
     type: 3}
-  rateSpawn: 7
+  rateSpawn: 3.3
   timespawn: 7
   vRandomMin: 0
   vRandomMax: 0
@@ -537,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &317529449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1321,7 +1321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1027210333
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2044,7 +2044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1883913339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2118,7 +2118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1896525776
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2620,7 +2620,7 @@ PrefabInstance:
     - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
       propertyPath: colldownWaves.Array.data[5]
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
@@ -2635,7 +2635,7 @@ PrefabInstance:
     - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
       propertyPath: Rateprojetile
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
@@ -2718,6 +2718,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentAmountProjetile_
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
+        type: 3}
+      propertyPath: RateprojetileShip
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5569825962928281151, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}

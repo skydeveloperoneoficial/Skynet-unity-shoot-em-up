@@ -78,6 +78,7 @@ public class Projectile : ProjetileBase
         CheckDestroyGameObject();
         
     }
+
    public bool SpawnItem()
    {
         Debug.Log("Instanciou"+ transform.position);
@@ -105,6 +106,7 @@ public class Projectile : ProjetileBase
 
 
                     SpawnItem();
+                    
                    
                     Debug.Log("Pegou");
                     

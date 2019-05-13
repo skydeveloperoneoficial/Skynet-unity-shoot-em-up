@@ -208,7 +208,7 @@ MonoBehaviour:
   projetiles:
   - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
   - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
-  rateprojetile_: 0
+  rateprojetile_: 2
   shoot: 1
 --- !u!82 &5345880825378123765
 AudioSource:
@@ -235,7 +235,7 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
-  BypassListenerEffects: 0
+  BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2

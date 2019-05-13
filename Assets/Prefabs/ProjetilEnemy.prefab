@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2966521043628913787}
   - component: {fileID: 286808406585056043}
   - component: {fileID: 5157206295879229071}
-  - component: {fileID: 7063505554010142083}
   - component: {fileID: 8028378344512001873}
   m_Layer: 0
   m_Name: ProjetilEnemy
@@ -100,21 +99,6 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   disableMove: 1
   disableRotation: 0
---- !u!111 &7063505554010142083
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12523939}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &8028378344512001873
 MonoBehaviour:
   m_ObjectHideFlags: 0

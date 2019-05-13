@@ -14,10 +14,10 @@ public class Ship : LifeBase
     [SerializeField] private GameObject projetile;
     [SerializeField] private Transform SpawnProjetile;
     [SerializeField] private GameObject[] gameObjects_;
-    [SerializeField] private float Rateprojetile;
+    public  static float Rateprojetile;
     [SerializeField] private float rateSpawnEnemy;
     [SerializeField] private float timeSpawnEnemy;
-    
+    [SerializeField] private float RateprojetileShip;
     private LifeBase enemyHealth, playerHealth;
     private ShipEnemy enemy,shipEnemytwo;
     
@@ -57,6 +57,7 @@ public class Ship : LifeBase
     private void Start()
     {
         
+        Ship.Rateprojetile =  RateprojetileShip;
         texts[3].gameObject.SetActive(false);// Desabilitar Game Over  Text
         buttons_[0].gameObject.SetActive(false);// Desabilitar Game Over  Bottom
         //Desbiltar  Gerenciador de Tiro
