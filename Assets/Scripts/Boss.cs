@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-public class Boss :MonoBehaviour
+public class Boss :LifeBase
 {
     
 

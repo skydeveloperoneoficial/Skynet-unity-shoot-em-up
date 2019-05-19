@@ -56,7 +56,7 @@ public class Ship : LifeBase
 
     private void Start()
     {
-        
+        //projetileManager.gameObject.SetActive(false);
         Ship.Rateprojetile =  RateprojetileShip;
         texts[3].gameObject.SetActive(false);// Desabilitar Game Over  Text
         buttons_[0].gameObject.SetActive(false);// Desabilitar Game Over  Bottom
@@ -66,6 +66,10 @@ public class Ship : LifeBase
         gameObjects_[0].gameObject.SetActive(false);
         //Desabiltar inimigo
         
+        
+        //Desativar tiro do boss
+        
+        gameObjects_[2].SetActive(false);
         //FinnDObj
         spawnControl2D = FindObjectOfType(typeof(SpawnControl2D)) as SpawnControl2D;
         enemy = FindObjectOfType(typeof(ShipEnemy)) as ShipEnemy;
@@ -90,10 +94,10 @@ public class Ship : LifeBase
     #endregion
 
 
-    private void MakeSound(AudioClip originalClip)
-    {
-        AudioSource.PlayClipAtPoint(originalClip, transform.position);
-    }
+    // private void MakeSound(AudioClip originalClip)
+    // {
+    //     AudioSource.PlayClipAtPoint(originalClip, transform.position);
+    // }
     public void HUDSTxt()
     {
         //Hp Do player
@@ -274,7 +278,7 @@ public class Ship : LifeBase
     }
     public IEnumerator WaveCont()
     {
-        projetileManager.Shoot = false;
+        //projetileManager.Shoot = false;
         // Primera Weve
         Debug.Log("Wave1");
         
@@ -298,7 +302,7 @@ public class Ship : LifeBase
         // Quarta Wave
         Debug.Log("Wave4");
 
-        projetileManager.Shoot = true;
+        //projetileManager.Shoot = true;
 
        
 
@@ -330,11 +334,14 @@ public class Ship : LifeBase
         scrollingBackground.Speed = 0; // Para o BG
         //desativar o Boss
         BasicMoveBoss.enableBossX = true;
+        // abilita tele
         BasicMoveBoss.enableTeleport = false;
+        gameObjects_[2].SetActive(true);
+        //projetileManager.gameObject.SetActive(true);
 ///Fim
 
         //Wave BattleBoss  Onda de balalha  do boss
-
+        
 
 
 

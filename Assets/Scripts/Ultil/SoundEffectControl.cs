@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundEffectControl : MonoBehaviour {
     public static SoundEffectControl Instance;
     public AudioClip[] SoundEffect;
+    // Volume  do effeito
     [Range(0, 100)] [SerializeField]private float VolSoundEffect;
    
     // Use this for initialization
