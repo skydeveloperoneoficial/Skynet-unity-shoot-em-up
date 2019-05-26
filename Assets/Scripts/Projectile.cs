@@ -7,15 +7,16 @@ public class Projectile : ProjetileBase
 {
 
     [SerializeField] private int damage;
-    [SerializeField] private string objectTag;
+    [SerializeField] private string objectTag,objectTag2;
     [SerializeField] private int timeDestroy;
     [SerializeField] private int score;
     private ScoreManager scoreManager;
     private Ship ship;
     private ShipEnemy shipEnemy;
-    private LifeBase characterLife;// Todos os personagens
+    private LifeBase characterLife,Bosslife;// Todos os personagens
     private SpawnControl2D spawnControl;
     private ScrollingBackground scrollingBackground;
+    private Boss boss;
     private GameObject[] gameObjects;
     
    
@@ -68,6 +69,7 @@ public class Projectile : ProjetileBase
         spawnControl = FindObjectOfType(typeof(SpawnControl2D)) as SpawnControl2D;
         scrollingBackground = FindObjectOfType(typeof(ScrollingBackground)) as ScrollingBackground;
         shipEnemy = FindObjectOfType(typeof(ShipEnemy))as ShipEnemy;
+        boss = FindObjectOfType(typeof(Boss))as Boss;
         
 
         
@@ -82,7 +84,9 @@ public class Projectile : ProjetileBase
    public bool SpawnItem()
    {
         Debug.Log("Instanciou"+ transform.position);
-        Instantiate(ship.GameObjects_[1],transform.position,transform.rotation);
+        Instantiate(ship.GameObjects_[0],transform.position,transform.rotation);
+        ship.GameObjects_[0].SetActive(true);
+
         return true;
         
         
@@ -107,6 +111,7 @@ public class Projectile : ProjetileBase
 
                     SpawnItem();
                     
+                    
                    
                     Debug.Log("Pegou");
                     
@@ -115,7 +120,7 @@ public class Projectile : ProjetileBase
                 }
                 
                 Destroy(gameObject);//destroyProjetil
-
+               
 
                 if (characterLife.Hp == lifezero)
                 {
@@ -138,6 +143,8 @@ public class Projectile : ProjetileBase
                     
 
                 }
+               
+                
                 
                 
 
@@ -145,8 +152,49 @@ public class Projectile : ProjetileBase
             }
 
         }
-        
+        if (collider.gameObject.tag == "Boss")
+        {
+            Bosslife = collider.gameObject.GetComponent<LifeBase>();
+
+            if (Bosslife != null)
+            {
+                Bosslife.Damage(Damage);
+                int lifezero = 0;
+                // Verifica se a vida do obj = zero
+                if (Bosslife.Hp == lifezero)
+                {
+
+
+                    //SpawnItem();
+                    //Destroy(ship.GameObjects_[1]);
+                     
+                   
+                    //Debug.Log("Pegou");
+                    
+                   SoundEffectControl.Instance.MakeExplosionSound();
+                    
+                }
+                
+                Destroy(gameObject);//destroyProjetil
+               if(boss.Hp== lifezero)
+               {
+
+               }
+
+                // if (characterLife.Hp == lifezero)
+                // {
+                //     ship.AddNumKillEnemy();
+
+                //     //shipEnemy.OnDestroy();
+                //     ScoreManager.AddScore(score);
+                // }
+               
+        }
+       
     }
+}
+        
+    
     
     protected override void OnAppyDamage()
     {

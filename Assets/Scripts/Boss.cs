@@ -9,7 +9,6 @@ public class Boss :LifeBase
 {
     
 
-    
     protected  void Start()
     {
         //desabilitar boss
@@ -22,4 +21,6 @@ public class Boss :LifeBase
     {
        
     }
+   
+    
 }

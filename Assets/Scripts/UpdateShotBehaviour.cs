@@ -67,6 +67,7 @@ public class UpdateShotBehaviour : MonoBehaviour
             //LevelUpProjetile(amountProjetileUp);
             //Debug.Log("Aumeto o Tiro"+amountProjetileUp--);
             Setprojetile(amountProjetileSet);
+            //Reload munition
             Reload_();
             
             

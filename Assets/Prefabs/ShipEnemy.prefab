@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 3019575756890720772}
   - component: {fileID: 2873870423549851812}
   - component: {fileID: 3079035943164375176}
-  - component: {fileID: 4766780240833790861}
   - component: {fileID: 5345880825378123765}
+  - component: {fileID: 7720198623676761077}
   m_Layer: 0
   m_Name: ShipEnemy
   m_TagString: ShipEnemy
@@ -190,26 +190,6 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   disableMove: 1
   disableRotation: 0
---- !u!114 &4766780240833790861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2265985893820961357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a12b05833bcc7c46843af8b89d98a13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnsProjetiles:
-  - {fileID: 251791529546532819}
-  - {fileID: 526007331344475488}
-  projetiles:
-  - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
-  - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
-  rateprojetile_: 2
-  shoot: 1
 --- !u!82 &5345880825378123765
 AudioSource:
   m_ObjectHideFlags: 0
@@ -306,6 +286,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7720198623676761077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265985893820961357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecf40d6434824d81f18432b1b2b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnsProjetiles:
+  - {fileID: 251791529546532819}
+  - {fileID: 526007331344475488}
+  projetiles:
+  - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
+  - {fileID: 12523939, guid: 242187b4c586d0247859ccf5fcb1ebf1, type: 3}
+  rateprojetile_: 2
 --- !u!1 &2795183200101413969
 GameObject:
   m_ObjectHideFlags: 0

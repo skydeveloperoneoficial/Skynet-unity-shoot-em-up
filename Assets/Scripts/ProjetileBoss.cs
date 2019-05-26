@@ -43,10 +43,11 @@ public class ProjetileBoss : ProjetileBase
             if(characterlife!= null)
             {
                 characterlife.Damage(Damage_);
-
-                if(characterlife.Hp== 0)
+                int zero= 0;
+                if(characterlife.Hp== zero)
                 {
                     SoundEffectControl.Instance.MakeExplosionSound();
+
                 }
                 // Destroi o tiro do boss
                 Destroy(gameObject);

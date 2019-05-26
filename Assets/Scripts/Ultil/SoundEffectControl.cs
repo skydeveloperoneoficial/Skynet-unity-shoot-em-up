@@ -29,6 +29,10 @@ public class SoundEffectControl : MonoBehaviour {
     {
         MakeSound(SoundEffect[1]);
     }
+    public void MakeEnemyShotSound()
+    {
+        MakeSound(SoundEffect[2]);
+    }
 
     
     public void MakeColetableSound()
