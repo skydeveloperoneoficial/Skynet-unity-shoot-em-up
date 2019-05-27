@@ -19,6 +19,7 @@ public class Projectile : ProjetileBase
     private Boss boss;
     private GameObject[] gameObjects;
     
+    
    
     #region Propriedades get Set
     public int Damage
@@ -176,9 +177,17 @@ public class Projectile : ProjetileBase
                 }
                 
                 Destroy(gameObject);//destroyProjetil
+
                if(boss.Hp== lifezero)
                {
-
+                    ship.Texts[4].gameObject.SetActive(true);
+                    ship.Buttons_[0].gameObject.SetActive(true);
+                    Ship.currentAmountProjetile_=0;
+                    
+                    StopAllCoroutines();
+                    Debug.ClearDeveloperConsole();
+                    
+                    
                }
 
                 // if (characterLife.Hp == lifezero)

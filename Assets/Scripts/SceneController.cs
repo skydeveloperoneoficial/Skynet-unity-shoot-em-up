@@ -14,9 +14,6 @@ public abstract class SceneController : MonoBehaviour {
     {
         SceneManager.LoadSceneAsync(nextscene);
     }
-    protected  void Start()
-    {
-       
-    }
+    
 
 }

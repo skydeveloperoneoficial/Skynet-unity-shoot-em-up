@@ -24,8 +24,8 @@ public class Ship : LifeBase
     private SpawnControl2D spawnControl2D;
     private ProjetileEnemys projetileEnemys;
     private ScrollingBackground scrollingBackground;
-    private Boss boss;
-    
+    //private Boss boss;
+    private SpawnBosses spawnBosses;
     
     private ScoreManager scoreManager;
     
@@ -57,23 +57,14 @@ public class Ship : LifeBase
 
     private void Start()
     {
-        
+        StartCorotine_();
         Ship.Rateprojetile =  RateprojetileShip;
         texts[3].gameObject.SetActive(false);// Desabilitar Game Over  Text
         buttons_[0].gameObject.SetActive(false);// Desabilitar Game Over  Bottom
-        
+        //Ativa o tiro
+        stopProjetile= true;
         //Inimigo pode atira
          ProjetileEnemys.shoot= true;
-
-        //Desativar Boss
-        GameObjects_[1].gameObject.SetActive(false);
-        //boss.gameObject.SetActive(false);
-        // desativar Tiro do Boss
-        ProjetileBosses.shoot = false;
-        
-        
-        
-       
 
         //FinnDObj
         spawnControl2D = FindObjectOfType(typeof(SpawnControl2D)) as SpawnControl2D;
@@ -84,9 +75,9 @@ public class Ship : LifeBase
         scrollingBackground = FindObjectOfType(typeof(ScrollingBackground)) as ScrollingBackground;
         
         scoreManager = FindObjectOfType(typeof(ScoreManager)) as ScoreManager;
-        //boss = FindObjectOfType(typeof(Boss))as Boss;
-        // GameObjects_[0]=  FindObjectOfType(typeof(GameObject))as GameObject;
-        // GameObjects_[1]=  FindObjectOfType(typeof(GameObject))as GameObject;
+        
+        spawnBosses = FindObjectOfType(typeof(SpawnBosses))as SpawnBosses;
+     
        
     }
 
@@ -112,6 +103,7 @@ public class Ship : LifeBase
         
        
         texts[3].text = "GameOver";
+        texts[4].text = " You Winner";
         
     }
     //Add projetile UI
@@ -262,11 +254,15 @@ public class Ship : LifeBase
 
         }
     }
-    private void StartCorotine_()
+    public  void StartCorotine_()
     {
       
         StartCoroutine(WaveCont());
         
+    }
+    public void AutoStartCorotine_()
+    {
+        StartCoroutine_Auto(WaveCont());
     }
     private void Update()
     {
@@ -277,10 +273,11 @@ public class Ship : LifeBase
         HUDSTxt();
         ShotProjetile();
 
-        StartCorotine_();
+        
         
         
     }
+    
     public IEnumerator WaveCont()
     {
         
@@ -327,7 +324,7 @@ public class Ship : LifeBase
         // O boss aparece
         yield return new WaitForSeconds(colldownWaves[6]);
         // Aparece o Boss
-
+        
         GameObjects_[1].gameObject.SetActive(true);
         //boss.gameObject.SetActive(true);
         

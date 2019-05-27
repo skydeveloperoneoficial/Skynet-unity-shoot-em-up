@@ -21,6 +21,12 @@ public class Boss :LifeBase
     {
        
     }
+    public   void instanceBoss()
+    {
+        Debug.Log("Instaciou o Boss");
+        Instantiate(this,this.transform.position,this.transform.rotation);
+
+    }
    
     
 }
