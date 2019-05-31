@@ -218,6 +218,7 @@ MonoBehaviour:
   Animation_: 0
   damage: 1
   objectTag: ShipEnemy
+  objectTag2: 
   timeDestroy: 7
   score: 1
 --- !u!1 &427718609

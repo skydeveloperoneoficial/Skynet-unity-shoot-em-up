@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class ShipEnemy : LifeBase
 {
-    private BasicMoviment2D enemyMove;
+    
  
     [SerializeField]private int timeDestroy;// So mente nese  campo
 
     private Ship ship;
+    public static bool destroyShipEnemy;
 
 
 
@@ -42,7 +43,7 @@ public class ShipEnemy : LifeBase
    
     private void FindObject()
     {
-        enemyMove = FindObjectOfType(typeof(BasicMoviment2D)) as BasicMoviment2D;
+        
       
 
         ship = FindObjectOfType(typeof(Ship)) as Ship;
@@ -50,11 +51,20 @@ public class ShipEnemy : LifeBase
         
 
     }
-
+    // Destruir a o Inimgo depois de um tempo
     public void OnTimeDestroy()
     {
         Destroy(gameObject, TimeDestroy);
     }
+    public void OnDestroyNoTime()
+    {
+        if(destroyShipEnemy)
+        {
+            Destroy(gameObject);
+        }
+        
+    }
+   
    
 
 

@@ -7,12 +7,11 @@ using UnityEngine;
 
 public class Boss :LifeBase
 {
-    
-
+    public static bool destroyBoss;
     protected  void Start()
     {
-        //desabilitar boss
         
+        OnBossDestroy();
         
     }
 
@@ -21,12 +20,15 @@ public class Boss :LifeBase
     {
        
     }
-    public   void instanceBoss()
+    public void OnBossDestroy()
     {
-        Debug.Log("Instaciou o Boss");
-        Instantiate(this,this.transform.position,this.transform.rotation);
-
+        if(destroyBoss)
+        {
+            Destroy(gameObject);
+        }
+        
     }
+    
    
     
 }

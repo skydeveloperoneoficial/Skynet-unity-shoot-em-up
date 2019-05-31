@@ -153,13 +153,15 @@ public class Projectile : ProjetileBase
             }
 
         }
+        // Colisao do Tiro do player no boss
         if (collider.gameObject.tag == "Boss")
         {
             Bosslife = collider.gameObject.GetComponent<LifeBase>();
-
+            
             if (Bosslife != null)
             {
                 Bosslife.Damage(Damage);
+                
                 int lifezero = 0;
                 // Verifica se a vida do obj = zero
                 if (Bosslife.Hp == lifezero)
@@ -178,25 +180,17 @@ public class Projectile : ProjetileBase
                 
                 Destroy(gameObject);//destroyProjetil
 
+
                if(boss.Hp== lifezero)
                {
                     ship.Texts[4].gameObject.SetActive(true);
                     ship.Buttons_[0].gameObject.SetActive(true);
-                    Ship.currentAmountProjetile_=0;
-                    
-                    StopAllCoroutines();
-                    Debug.ClearDeveloperConsole();
+                    //Debug.ClearDeveloperConsole();
+                    Ship.destroyShip = true;
                     
                     
                }
 
-                // if (characterLife.Hp == lifezero)
-                // {
-                //     ship.AddNumKillEnemy();
-
-                //     //shipEnemy.OnDestroy();
-                //     ScoreManager.AddScore(score);
-                // }
                
         }
        

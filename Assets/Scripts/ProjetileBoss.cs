@@ -59,11 +59,12 @@ public class ProjetileBoss : ProjetileBase
                      ship.Buttons_[0].gameObject.SetActive(true);
                      ship.Texts[0].gameObject.SetActive(false);
                      ship.Texts[2].gameObject.SetActive(false);
-                     // desabilitar Tiro do Boss
-                     ship.GameObjects_[2].SetActive(false);
-                     scoreManager.DesableTextScore();
-                     StopCoroutine(ship.WaveCont());
-                    
+                     
+                    Debug.ClearDeveloperConsole();
+                    scoreManager.DesableTextScore();
+                    StopCoroutine(ship.WaveCont());
+                    ProjetileBosses.shoot = false;
+                     Ship.destroyShip = true;
 
                  } 
             }

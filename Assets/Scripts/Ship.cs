@@ -19,8 +19,8 @@ public class Ship : LifeBase
     [SerializeField] private float timeSpawnEnemy;
     [SerializeField] private float RateprojetileShip;
     private LifeBase enemyHealth, playerHealth,BossHealth;
-    private ShipEnemy enemy,shipEnemytwo;
-    
+    private ShipEnemy enemy;
+    private Boss boss;
     private SpawnControl2D spawnControl2D;
     private ProjetileEnemys projetileEnemys;
     private ScrollingBackground scrollingBackground;
@@ -39,6 +39,7 @@ public class Ship : LifeBase
     [SerializeField]private int amountProjetileMax_;
     public static int currentAmountProjetile_;
     public static bool stopProjetile= true;
+    public static bool destroyShip;
     [SerializeField] private float rateProjeteleEnemy;
     
 
@@ -46,7 +47,7 @@ public class Ship : LifeBase
 
    
 
-    [SerializeField] private int damagerPlayer, damagerEnemy,damagerBoss ;
+    [SerializeField] private int damagerPlayer, damagerEnemy,DamageBoss ;
 
     [SerializeField]
     private float[] colldownWaves;
@@ -54,9 +55,13 @@ public class Ship : LifeBase
     
 
 
-
+    
     private void Start()
     {
+        destroyShip = false;
+        Ship.currentAmountProjetile_= 0;
+        BasicMoveBoss.enableBossX = false;
+        ProjetileBosses.shoot = false;
         StartCorotine_();
         Ship.Rateprojetile =  RateprojetileShip;
         texts[3].gameObject.SetActive(false);// Desabilitar Game Over  Text
@@ -64,20 +69,22 @@ public class Ship : LifeBase
         //Ativa o tiro
         stopProjetile= true;
         //Inimigo pode atira
-         ProjetileEnemys.shoot= true;
+        ProjetileEnemys.shoot= true;
 
         //FinnDObj
         spawnControl2D = FindObjectOfType(typeof(SpawnControl2D)) as SpawnControl2D;
         enemy = FindObjectOfType(typeof(ShipEnemy)) as ShipEnemy;
        
-        shipEnemytwo = FindObjectOfType(typeof(ShipEnemy)) as ShipEnemy;
+       
         projetileEnemys = FindObjectOfType(typeof(ProjetileEnemys)) as ProjetileEnemys;
         scrollingBackground = FindObjectOfType(typeof(ScrollingBackground)) as ScrollingBackground;
         
         scoreManager = FindObjectOfType(typeof(ScoreManager)) as ScoreManager;
         
         spawnBosses = FindObjectOfType(typeof(SpawnBosses))as SpawnBosses;
-     
+        boss = FindObjectOfType(typeof(Boss))as Boss;
+
+        OnShipDestroy();
        
     }
 
@@ -92,12 +99,19 @@ public class Ship : LifeBase
     
     #endregion
 
-
+public void OnShipDestroy()
+    {
+        if(destroyShip)
+        {
+            Destroy(gameObject);
+        }
+        
+    }
   
     public void HUDSTxt()
     {
         //Hp Do player
-        texts[0].text = txts[0] + Hp;
+        texts[0].text = txts[0] + this.Hp;
         //quantidade maxima de Tiro;
         texts[2].text = txts[1] + currentAmountProjetile_;
         
@@ -148,18 +162,19 @@ public class Ship : LifeBase
     }
 
 
-    // Colisoes  ship com o ShipEnemy
+    
 
     #region Colision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        // Verifica a  colisao do inimigo com o player
         if (collision.gameObject.tag == tagobj)
         {
             var damagePlayer = false;
+            
 
             enemy = collision.gameObject.GetComponent<ShipEnemy>();
-
+            
             if (enemy != null)
             {
                 enemyHealth = enemy.GetComponent<LifeBase>();
@@ -171,19 +186,17 @@ public class Ship : LifeBase
                 
                     
                     SoundEffectControl.Instance.MakeExplosionSound();
-                    
+                    // Som de explosao
 
                
                 }
-                int zero=0;
-                if (enemyHealth.Hp == zero)// se a vida do inimigo  For zero
-                {
-                    // adciona  quantide Morte para inimigos
-                    AddNumKillEnemy();
-                }
+                
+                
+                
         
                 damagePlayer = true;
             }
+            
             // DANO DO PLAYER
             if (damagePlayer)
             {
@@ -221,6 +234,51 @@ public class Ship : LifeBase
             
 
         }
+
+        if (collision.gameObject.tag == "Boss")
+        {
+            
+
+            boss = collision.gameObject.GetComponent<Boss>();
+            if (boss != null)
+            {
+                BossHealth = boss.GetComponent<LifeBase>();
+
+                if (BossHealth != null)
+                {
+                    BossHealth.Damage(DamageBoss);
+                    //ScoreManager.TotalScore--;
+                        if (boss.Hp == 0)
+                        {
+                            texts[4].gameObject.SetActive(true);
+                            buttons_[0].gameObject.SetActive(true);
+                            Ship.currentAmountProjetile_= 0;
+                            BasicMoveBoss.enableBossX = false;
+                            ProjetileBosses.shoot = false;
+                            destroyShip = true;
+                            
+                        }
+                    
+                        SoundEffectControl.Instance.MakeExplosionSound();
+                        // Som de explosao
+                        
+                        
+
+                    
+
+                }
+                
+                
+                
+        
+                
+            }
+           
+            
+
+        }
+        
+         
     }
     
     #endregion
@@ -262,7 +320,7 @@ public class Ship : LifeBase
     }
     public void AutoStartCorotine_()
     {
-        StartCoroutine_Auto(WaveCont());
+        StartCoroutine(WaveCont());
     }
     private void Update()
     {
@@ -313,6 +371,7 @@ public class Ship : LifeBase
         // Quinta Wave
         Debug.Log("Wave5");
         yield return new WaitForSeconds(colldownWaves[4]);
+        
         // Sexta Wave
         Debug.Log("Wave6");
 
@@ -335,21 +394,21 @@ public class Ship : LifeBase
         Debug.Log("Parar Boss e para BG");
         
        
-        scrollingBackground.Speed = 0; // Para o BG
+        //scrollingBackground.Speed = 0; // Para o BsG
         // desativar o Boss
         BasicMoveBoss.enableBossX = true;
         // abilita tele
         BasicMoveBoss.enableTeleport = false;
 
-        // tiro do boss fica visivel
-        ProjetileBosses.shoot = true;
+        
         
         
 ///Fim
 
         //Wave BattleBoss  Onda de balalha  do boss
         
-
+        // tiro do boss fica visivel
+        ProjetileBosses.shoot = true;
 
 
     }

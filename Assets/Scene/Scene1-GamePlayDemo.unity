@@ -2810,10 +2810,20 @@ PrefabInstance:
       propertyPath: texts.Array.data[4]
       value: 
       objectReference: {fileID: 1850809793}
+    - target: {fileID: 5569825962928281150, guid: 44d0550d994b910479cd3bbb6e5baadc,
+        type: 3}
+      propertyPath: DamageBoss
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5569825962928281151, guid: 44d0550d994b910479cd3bbb6e5baadc,
         type: 3}
       propertyPath: m_Radius
       value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569825962928281149, guid: 44d0550d994b910479cd3bbb6e5baadc,
+        type: 3}
+      propertyPath: selectInput
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d0550d994b910479cd3bbb6e5baadc, type: 3}
