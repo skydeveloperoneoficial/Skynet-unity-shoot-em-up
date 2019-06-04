@@ -10,7 +10,7 @@ public class ProjetileBoss : ProjetileBase
     private Ship ship;
     private ScoreManager scoreManager;
    
-
+    private WaveControl  waveControl;
     [SerializeField] private int damage;
     [SerializeField] private int timeDestroy;
     // campo  de Propriedade
@@ -34,7 +34,9 @@ public class ProjetileBoss : ProjetileBase
      private void findObjs()
      {
          ship = FindObjectOfType(typeof(Ship))as Ship;
-          scoreManager = FindObjectOfType( typeof(ScoreManager)) as ScoreManager;
+            scoreManager = FindObjectOfType( typeof(ScoreManager)) as ScoreManager;
+            waveControl= FindObjectOfType(typeof(WaveControl))as WaveControl;
+            
      }
     private void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag=="Ship")
@@ -62,9 +64,10 @@ public class ProjetileBoss : ProjetileBase
                      
                     Debug.ClearDeveloperConsole();
                     scoreManager.DesableTextScore();
-                    StopCoroutine(ship.WaveCont());
+                    //StopCoroutine(gameControl.WaveCont());
+                    waveControl.StopCorotina_();
                     ProjetileBosses.shoot = false;
-                     Ship.destroyShip = true;
+                    Ship.destroyShip = true;
 
                  } 
             }

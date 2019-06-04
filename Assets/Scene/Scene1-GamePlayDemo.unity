@@ -368,8 +368,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPos: {fileID: 2265985893820961352, guid: 2e6e1d72f692c0d4da839341343c6598,
     type: 3}
-  rateSpawn: 3.3
-  timespawn: 7
+  rateSpawn: 6
+  timespawn: 3
   vRandomMin: 0
   vRandomMax: 0
   hRandomMin: 3
@@ -1350,6 +1350,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1095856051}
+--- !u!1 &962476697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5569825962928281145, guid: 44d0550d994b910479cd3bbb6e5baadc,
+    type: 3}
+  m_PrefabInstance: {fileID: 5569825961442204163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &962476704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962476697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9021814f53e38454aba78ac3b0d71c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colldownWaves:
+  - 9
+  - 9
+  - 9
+  - 9
+  - 9
+  - 9
+  - 10
+  - 10
 --- !u!1001 &1000401142
 PrefabInstance:
   m_ObjectHideFlags: 0

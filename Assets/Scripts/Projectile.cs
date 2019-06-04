@@ -11,6 +11,7 @@ public class Projectile : ProjetileBase
     [SerializeField] private int timeDestroy;
     [SerializeField] private int score;
     private ScoreManager scoreManager;
+    private WaveControl waveControl;
     private Ship ship;
     private ShipEnemy shipEnemy;
     private LifeBase characterLife,Bosslife;// Todos os personagens
@@ -72,7 +73,7 @@ public class Projectile : ProjetileBase
         shipEnemy = FindObjectOfType(typeof(ShipEnemy))as ShipEnemy;
         boss = FindObjectOfType(typeof(Boss))as Boss;
         
-
+        waveControl = FindObjectOfType(typeof(WaveControl))as WaveControl;
         
     }
     // Update is called once per frame
@@ -85,7 +86,7 @@ public class Projectile : ProjetileBase
    public bool SpawnItem()
    {
         Debug.Log("Instanciou"+ transform.position);
-        Instantiate(ship.GameObjects_[0],transform.position,transform.rotation);
+        Instantiate(ship.GameObjects_[0],shipEnemy.transform.position,shipEnemy.transform.rotation);
         ship.GameObjects_[0].SetActive(true);
 
         return true;
@@ -140,7 +141,8 @@ public class Projectile : ProjetileBase
                     ship.Texts[0].gameObject.SetActive(false);
                     ship.Texts[2].gameObject.SetActive(false);
                     scoreManager.DesableTextScore();
-                    StopCoroutine(ship.WaveCont());
+                    //StopCoroutine(gameControl.WaveCont());
+                    waveControl.StopCorotina_();
                     
 
                 }
@@ -187,6 +189,7 @@ public class Projectile : ProjetileBase
                     ship.Buttons_[0].gameObject.SetActive(true);
                     //Debug.ClearDeveloperConsole();
                     Ship.destroyShip = true;
+                    ScoreManager.AddScore(300);
                     
                     
                }

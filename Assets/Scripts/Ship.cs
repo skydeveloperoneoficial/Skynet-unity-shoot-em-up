@@ -26,6 +26,7 @@ public class Ship : LifeBase
     private ScrollingBackground scrollingBackground;
     //private Boss boss;
     private SpawnBosses spawnBosses;
+    private  WaveControl waveControl;
     
     private ScoreManager scoreManager;
     
@@ -41,6 +42,7 @@ public class Ship : LifeBase
     public static bool stopProjetile= true;
     public static bool destroyShip;
     [SerializeField] private float rateProjeteleEnemy;
+   
     
 
     
@@ -50,7 +52,7 @@ public class Ship : LifeBase
     [SerializeField] private int damagerPlayer, damagerEnemy,DamageBoss ;
 
     [SerializeField]
-    private float[] colldownWaves;
+    //private float[] colldownWaves;
     
     
 
@@ -58,23 +60,11 @@ public class Ship : LifeBase
     
     private void Start()
     {
-        destroyShip = false;
-        Ship.currentAmountProjetile_= 0;
-        BasicMoveBoss.enableBossX = false;
-        ProjetileBosses.shoot = false;
-        StartCorotine_();
-        Ship.Rateprojetile =  RateprojetileShip;
-        texts[3].gameObject.SetActive(false);// Desabilitar Game Over  Text
-        buttons_[0].gameObject.SetActive(false);// Desabilitar Game Over  Bottom
-        //Ativa o tiro
-        stopProjetile= true;
-        //Inimigo pode atira
-        ProjetileEnemys.shoot= true;
 
         //FinnDObj
         spawnControl2D = FindObjectOfType(typeof(SpawnControl2D)) as SpawnControl2D;
         enemy = FindObjectOfType(typeof(ShipEnemy)) as ShipEnemy;
-       
+        //gameControl = FindObjectOfType(typeof(GameControl))as GameControl;
        
         projetileEnemys = FindObjectOfType(typeof(ProjetileEnemys)) as ProjetileEnemys;
         scrollingBackground = FindObjectOfType(typeof(ScrollingBackground)) as ScrollingBackground;
@@ -83,6 +73,21 @@ public class Ship : LifeBase
         
         spawnBosses = FindObjectOfType(typeof(SpawnBosses))as SpawnBosses;
         boss = FindObjectOfType(typeof(Boss))as Boss;
+        waveControl = FindObjectOfType(typeof(WaveControl)) as WaveControl;
+
+
+        destroyShip = false;
+       
+        
+        Ship.Rateprojetile =  RateprojetileShip;
+        texts[3].gameObject.SetActive(false);// Desabilitar Game Over  Text
+        buttons_[0].gameObject.SetActive(false);// Desabilitar Game Over  Bottom
+        //Ativa o tiro
+        stopProjetile= true;
+        //Inimigo pode atira
+        ProjetileEnemys.shoot= true;
+
+        
 
         OnShipDestroy();
        
@@ -95,11 +100,12 @@ public class Ship : LifeBase
     public Button[] Buttons_ { get => buttons_; set => buttons_ = value; }
     public GameObject[] GameObjects_ { get => gameObjects_; set => gameObjects_ = value; }
     public int AmountProjetileMax_ { get => amountProjetileMax_; set => amountProjetileMax_ = value; }
-    
-    
+    //public float[] ColldownWaves { get => colldownWaves; set => colldownWaves = value; }
+
+
     #endregion
 
-public void OnShipDestroy()
+    public void OnShipDestroy()
     {
         if(destroyShip)
         {
@@ -222,7 +228,8 @@ public void OnShipDestroy()
                         scoreManager.DesableTextScore();
                         scrollingBackground.Speed = 0;
                         spawnControl2D.directionSpawn = StateDirectionSpawn.Disable;
-                        StopCoroutine(WaveCont());
+                         //StopCoroutine(gameControl.WaveCont());
+                         waveControl.StopCorotina_();
                     }
                       
 
@@ -234,7 +241,7 @@ public void OnShipDestroy()
             
 
         }
-
+        
         if (collision.gameObject.tag == "Boss")
         {
             
@@ -256,6 +263,7 @@ public void OnShipDestroy()
                             BasicMoveBoss.enableBossX = false;
                             ProjetileBosses.shoot = false;
                             destroyShip = true;
+                            ScoreManager.AddScore(300);
                             
                         }
                     
@@ -312,16 +320,7 @@ public void OnShipDestroy()
 
         }
     }
-    public  void StartCorotine_()
-    {
-      
-        StartCoroutine(WaveCont());
-        
-    }
-    public void AutoStartCorotine_()
-    {
-        StartCoroutine(WaveCont());
-    }
+
     private void Update()
     {
         
@@ -336,82 +335,6 @@ public void OnShipDestroy()
         
     }
     
-    public IEnumerator WaveCont()
-    {
-        
-        // Primera Weve
-        Debug.Log("Wave1");
-        
-        yield return new WaitForSeconds(colldownWaves[0]);
-
-      
-        
-        // Segunda Wave
-        Debug.Log("Wave2");
-
-        //Debug.Log("(Wave 2)" + colldownWaves[0]);
-  
-        Debug.Log("Disabiltar Spawn");
-
-        yield return new WaitForSeconds(colldownWaves[1]);
-        // terceira Wave
-        Debug.Log("Wave3");
-        Debug.Log("abiltar Spawn");
-       
-
-        yield return new WaitForSeconds(colldownWaves[2]);
-        // Quarta Wave
-        Debug.Log("Wave4");
-
-        //projetileManager.Shoot = true;
-
-       
-
-        yield return new WaitForSeconds(colldownWaves[3]);
-        // Quinta Wave
-        Debug.Log("Wave5");
-        yield return new WaitForSeconds(colldownWaves[4]);
-        
-        // Sexta Wave
-        Debug.Log("Wave6");
-
-        yield return new WaitForSeconds(colldownWaves[5]);
-        // Final Wave
-        Debug.Log("Disabiltar Spawn");
-        spawnControl2D.directionSpawn = StateDirectionSpawn.Disable;// Para de spawnar
-        Debug.Log("WaveFinal");
-        // O boss aparece
-        yield return new WaitForSeconds(colldownWaves[6]);
-        // Aparece o Boss
-        
-        GameObjects_[1].gameObject.SetActive(true);
-        //boss.gameObject.SetActive(true);
-        
-        
-
-        yield return new WaitForSeconds(colldownWaves[7]);
-        
-        Debug.Log("Parar Boss e para BG");
-        
-       
-        //scrollingBackground.Speed = 0; // Para o BsG
-        // desativar o Boss
-        BasicMoveBoss.enableBossX = true;
-        // abilita tele
-        BasicMoveBoss.enableTeleport = false;
-
-        
-        
-        
-///Fim
-
-        //Wave BattleBoss  Onda de balalha  do boss
-        
-        // tiro do boss fica visivel
-        ProjetileBosses.shoot = true;
-
-
-    }
 
 
 }
