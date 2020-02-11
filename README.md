@@ -1,7 +1,7 @@
 # Skynet-unity-shoot-em-up
-Meu PortifolioGames
+Meu PortiFolioGames
 Jogo ao meu ver jogavel não comercial
-para estudos
+Para estudos
 Feito Com engine Unity
 O sistema  de   limit   de tiro   e Minha propriedade intectual ok
 Video do Jogo
