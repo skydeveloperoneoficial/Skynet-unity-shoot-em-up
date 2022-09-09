@@ -231,15 +231,8 @@ public class Ship : LifeBase
                          //StopCoroutine(gameControl.WaveCont());
                          waveControl.StopCorotina_();
                     }
-                      
-
-
-
-
                 }
             }
-            
-
         }
         
         if (collision.gameObject.tag == "Boss")
@@ -269,24 +262,13 @@ public class Ship : LifeBase
                     
                         SoundEffectControl.Instance.MakeExplosionSound();
                         // Som de explosao
-                        
-                        
-
-                    
 
                 }
-                
-                
-                
-        
-                
+   
             }
-           
-            
 
         }
-        
-         
+                 
     }
     
     #endregion
